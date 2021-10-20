@@ -490,3 +490,4 @@ packageDoc / packageOptions := ???
 - [1] sbt Faq, https://www.scala-sbt.org/release/docs/Faq.html
 - [2] 2019 Scala Developer Survey, https://scalacenter.github.io/scala-developer-survey-2019/#what-are-the-*other*-pain-points-to-get-started-in-scala
 - [3] sbt Keys, https://www.scala-sbt.org/1.x/api/sbt/Keys$.html
+          
