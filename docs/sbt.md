@@ -1,44 +1,4 @@
 # sbt
-1. [What is sbt?](#what-is-sbt)
-
-1. [Why sbt?](#why-sbt)
-
-1. [The sbt project structure](#the-sbt-project-structure)
-
-1. [Build definition](#build-definition)
-
-   1. [Settings expression](#settings-expression)
-   1. [Adding project description](#adding-project-description)
-   1. [Adding library dependencies](#adding-library-dependencies)
-   1. [Compiler options](#compiler-options)
-   1. [Command alias](#command-alias)
-   1. [Adding plugins](#adding-plugins)
-
-1. [Build support files](#build-support-files)
-   1. [Specifying the sbt version](#specifying-the-sbt-version)
-   1. [Organize plugins](#organize-plugins) 
-
-1. [How to run sbt?](#how-to-run-sbt) 
-   1. [Installation](#installation)
-   1. [Sbt shell and common commands](#sbt-shell-and-common-commands)
-   1. [Batch mode](#batch-mode)
-   1. [Continuous build and test](#continuous-build-and-test)
-
-1. [Common plugins](#common-plugins)
-   1. [Formatter](#formatter)
-   1. [Package & Release](#package--release)
-   1. [Test & Coverage](#test--coverage)
-
-1. [Scopes](#scopes) 
-   1. [There are three scope axes](#there-are-three-scope-axes)
-   1. [Scoping by project axis](#scoping-by-project-axis)
-   1. [Scoping by configuration axis](#scoping-by-configuration-axis)
-   1. [Scoping by task axis](#scoping-by-task-axis)
-
-1. [Referrences](#referrences) 
-
-<br/>
-<br/>
 
 ## What is sbt?
 
@@ -490,4 +450,3 @@ packageDoc / packageOptions := ???
 - [1] sbt Faq, https://www.scala-sbt.org/release/docs/Faq.html
 - [2] 2019 Scala Developer Survey, https://scalacenter.github.io/scala-developer-survey-2019/#what-are-the-*other*-pain-points-to-get-started-in-scala
 - [3] sbt Keys, https://www.scala-sbt.org/1.x/api/sbt/Keys$.html
-          

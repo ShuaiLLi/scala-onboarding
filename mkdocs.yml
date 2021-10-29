@@ -1,0 +1,15 @@
+site_name: Scala Onboarding
+repo_url: 
+repo_name: scala onboarding
+theme:
+  name: material
+  font:
+    text: Museo Sans
+  icon:
+    repo: fontawesome/brands/github
+  logo: assets/scala-favicon.png
+  favicon: assets/scala-favicon.png
+nav:
+  - Introduction: index.md
+  - Build Tool:
+    - sbt: sbt.md
