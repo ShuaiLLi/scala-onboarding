@@ -42,18 +42,23 @@
 ---
 
 ## The sbt project structure
-  ```
-  build.sbt              ------ build definition file
-  project/               ------ build support files
-  src/
-  |-- main/
-    |-- resources/
-    |-- scala/
-  |-- test/
-    |-- resources/
-    |-- scala/
-  target/                ------ build products
-  ```
+  
+  <pre>
+  ├── build.sbt              ------ build definition file
+  ├── project                ------ build support files
+  │   ├── build.properties
+  │   ├── plugins.sbt
+  │   └── project
+  ├── src
+  │   ├── main
+  │   │   ├── resources
+  │   │   └── scala
+  │   └── test
+  │       ├── resources
+  │       └── scala
+  └── target                  ------ build products
+  </pre>
+
 ---
 
 ## Build Definition
@@ -84,10 +89,10 @@
 
 - 可以通过如下方式自定义keys
 
-  ```scala
-  lazy val customKey = settingKey[String]("The custom key")
-  ```
-
+    ```scala
+    lazy val customKey = settingKey[String]("The custom key")
+    ```
+  
 ---
 
 ### Adding project description
@@ -119,19 +124,23 @@ libraryDependencies ++= Seq(
 ```
 
 Tips
+
 - Scala主次版本的特性差异较大，因此很多lib都会被编译给多个Scala版本 [可见示例](https://mvnrepository.com/artifact/org.http4s/http4s-core)
 
 - 通过 %% 方法获取相应Scala版本的lib，确保lib对项目是二进制兼容的 
 
-  如果你用的是 groupID %% artifactID % revision 而不是 groupID % artifactID % revision（区别在于 groupID 后面是 %%），sbt 会在 lib名称中加上项目的 Scala 版本号。 这只是一种快捷方法。你可以这样写不用 %%：
-    ```scala
-    libraryDependencies += "org.scala-tools" % "scala-stm_2.11" % "0.3"
-    ```
+  如果你用的是 groupID %% artifactID % revision 而不是 groupID % artifactID % revision（区别在于 groupID 后面是 %%），sbt 会在 lib名称中加上项目的 Scala 版本号。 这只是一种快捷方法。你可以这样写不用 %%:
 
-  假设这个构建的 scalaVersion 是 2.11.1，下面这种方式是等效的（注意 "org.scala-tools" 后面是 %%）：
-    ```scala
-    libraryDependencies += "org.scala-tools" %% "scala-stm" % "0.3"
-    ```
+```scala
+libraryDependencies += "org.scala-tools" % "scala-stm_2.11" % "0.3"
+```
+
+  假设这个构建的 scalaVersion 是 2.11.1，下面这种方式是等效的（注意 "org.scala-tools" 后面是 %%）:
+
+```scala
+libraryDependencies += "org.scala-tools" %% "scala-stm" % "0.3"
+```
+
 ---
 
 ### Compiler Options
@@ -184,9 +193,10 @@ addCompilerPlugin("org.typelevel" %% "kind-projector" % kindProjectorVersion cro
 
 - 使用 _`project/build.properties`_ 文件指定 _`sbt`_ 版本
 
-  ```properties
-  sbt.version = 1.4.7
-  ```
+```properties
+sbt.version = 1.4.7
+```
+
 - 如果指定的 _`sbt`_ 版本在本地不存在, _`sbt launcher`_ 将会在构建开始前自动为你下载.
 - 这个特性会保证本地预装了不同版本 _`sbt`_ 的开发者对同一项目的构建生成一致的构建产物, 因为它将最终使用指定版本的sbt
 
@@ -196,11 +206,11 @@ addCompilerPlugin("org.typelevel" %% "kind-projector" % kindProjectorVersion cro
 
 - 使用 _`project/plugins.sbt`_ 文件管理 _`sbt`_ 插件
 
-  ```scala
-  addSbtPlugin("com.typesafe.sbt" % "sbt-native-packager" % "1.8.0")
-  addSbtPlugin("org.scoverage" % "sbt-scoverage" % "1.6.1")
-  addSbtPlugin("org.scalameta" % "sbt-scalafmt" % "2.4.2")
-  ```
+```scala
+addSbtPlugin("com.typesafe.sbt" % "sbt-native-packager" % "1.8.0")
+addSbtPlugin("org.scoverage" % "sbt-scoverage" % "1.6.1")
+addSbtPlugin("org.scalameta" % "sbt-scalafmt" % "2.4.2")
+```
 
 ---
 
@@ -213,16 +223,17 @@ addCompilerPlugin("org.typelevel" %% "kind-projector" % kindProjectorVersion cro
 - 安装 _`JDK`_ （推荐安装JDK8或者JDK11）
 
 - 安装 _`sbt`_
-  ```shell
-  // In MacOS 
-  $ brew install sbt
-  ```
+
+```shell
+// In MacOS 
+$ brew install sbt
+```
 
 - 现在你可以开始Scala项目的开发
 
 - Tips:
   - Scala不同于其他语言，Scala主次版本之间的特性差异较大，因此通常都是为每个项目安装特定版本(_`build.sbt`_)的Scala,而不是全局安装，_`sbt`_就可以用来管理每个Scala项目特定的Scala版本.
-     
+
   - 安装 _`sbt`_ 后，默认情况下, _`sbt`_ 会使用和自身版本相应版本的Scala来构建项目
 
 ---
@@ -230,20 +241,24 @@ addCompilerPlugin("org.typelevel" %% "kind-projector" % kindProjectorVersion cro
 ### sbt Shell and common commands
 
 - 进入 _`sbt`_ 交互模式
-  ```shell
-  $ sbt
-  ```
+
+```shell
+$ sbt
+```
+
 - 常用命令:
-  ```shell
-  > new
-  > clean
-  > compile 
-  > test
-  > testOnly
-  > package
-  > console
-  > run <Main>
-  ```
+
+```shell
+> new
+> clean
+> compile
+> test
+> testOnly
+> package
+> console
+> run
+```
+
 ---
 
 ### Batch mode
@@ -266,25 +281,25 @@ $ sbt clean compile "testOnly TestA TestB"
 
 - 交互模式下尝试
 
-  ```shell
-  > ~ compile
-  ```
+```shell
+> ~ compile
+```
 
-  ```shell
-  > ~ run
-  ```
+```shell
+> ~ run
+```
 
-  ```shell
-  > ~ testQuick
-  ```
+```shell
+> ~ testQuick
+```
 
   交互模式下按`回车键`停止监视变化，当然了交互模式或者批处理模式下均可使用 _`~`_ 前缀.
 
 - 批处理模式下尝试
 
-  ```shell
-  $ sbt '~ run'
-  ```
+```shell
+$ sbt '~ run'
+```
 
   为了区分类Unix系统下和 _`sbt`_ 下的 _`~`_ 前缀(Unix系统下代表当前用户根目录)，在批处理模式下需要使用 _`'`_ 将sbt的命令包起来
 
@@ -298,27 +313,30 @@ $ sbt clean compile "testOnly TestA TestB"
 
 - 在 _`project/plugins.sbt`_ 文件添加插件
 
-  ```scala
-  addSbtPlugin("org.scalameta" % "sbt-scalafmt" % "2.4.2")
-  ```
+```scala
+addSbtPlugin("org.scalameta" % "sbt-scalafmt" % "2.4.2")
+```
+
 - 项目根目录下添加配置文件 _`.scalafmt.conf`_ 
 - 示例一个最简单的配置, 官方配置说明请见: [链接](https://scalameta.org/scalafmt/docs/configuration.html)
   
-  ```conf
-  version = 2.7.5
+```conf
+version = 2.7.5
 
-  maxColumn = 180
+maxColumn = 180
 
-  align = more
-  danglingParentheses = false
-  continuationIndent.defnSite = 2
-  ```
+align = more
+danglingParentheses = false
+continuationIndent.defnSite = 2
+```
+
 - 指定如下命令执行formatter
-  ```shell
-  $ sbt scalafmt
-  // or
-  $ sbt scalafmtCheck
-  ```
+
+```shell
+$ sbt scalafmt
+// or
+$ sbt scalafmtCheck
+```
 
 ---
 
@@ -326,51 +344,58 @@ $ sbt clean compile "testOnly TestA TestB"
 
 - 在 _`project/plugins.sbt`_ 文件添加打包插件（产出胖JAR包-一个包含代码和库中所有类文件的JAR文件）
 
-  ```scala
-  addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "1.0.0")
-  ```
+```scala
+addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "1.0.0")
+```
+
 - 执行如下命令生成 JAR 包
-  ```shell
-  $ sbt package
-  ```
+
+```shell
+$ sbt package
+```
 
 - 在 _`project/plugins.sbt`_ 文件添加打包插件（产出部署镜像）
 
-  ```scala
-  addSbtPlugin("com.typesafe.sbt" % "sbt-native-packager" % "1.7.5")
-  ```
+```scala
+addSbtPlugin("com.typesafe.sbt" % "sbt-native-packager" % "1.7.5")
+```
+
 - 执行如下命令为不同系统构建部署镜像
 
-  ```shell
-  $ sbt debian:packageBin   # deb package
-  $ sbt windows:packageBin  # msi package
-  $ sbt docker:publishLocal # docker image
-  ```
+```shell
+$ sbt debian:packageBin   # deb package
+$ sbt windows:packageBin  # msi package
+$ sbt docker:publishLocal # docker image
+```
 
 ---
 
 ### Test & Coverage
 
 - 在 _`project/plugins.sbt`_ 文件添加插件
-  ```scala
-  addSbtPlugin("org.scoverage" % "sbt-scoverage" % "1.6.1")
-  ```
+
+```scala
+addSbtPlugin("org.scoverage" % "sbt-scoverage" % "1.6.1")
+```
 
 - 在 _`build.sbt`_ 文件添加测试覆盖率配置
-  ```scala
-  coverageEnabled in Test := true
-  coverageMinimum := 90
-  coverageFailOnMinimum := true
-  coverageExcludedPackages := coverageExcludedClasses.mkString(";")
-  ```
+
+```scala
+coverageEnabled in Test := true
+coverageMinimum := 90
+coverageFailOnMinimum := true
+coverageExcludedPackages := coverageExcludedClasses.mkString(";")
+```
+
 - 执行如下命令均可调用覆盖率检查
-  ```shell
-  $ sbt coverage
-  // or 
-  $ sbt test
-  // or
-  $ sbt coverageReport
-  ```
+
+```shell
+$ sbt coverage
+// or 
+$ sbt test
+// or
+$ sbt coverageReport
+```
 
 ---
 
@@ -382,7 +407,8 @@ $ sbt clean compile "testOnly TestA TestB"
 
 ---
 
-### There are three scope axes:
+### There are three scope axes
+
 Scope 轴是一种类型，该类型的每个实例都能定义自己的 scope（也就是说，每个实例的key可以有自己特定的值）.
 
 - Projects
@@ -399,11 +425,11 @@ Scope 轴是一种类型，该类型的每个实例都能定义自己的 scope�
 
 - 如下示例，利用 project 轴设置构建层级的 _`settings`_
 
-  ```scala
-  ThisBuild / scalaVersion     := "2.13.5"
-  ThisBuild / version          := "0.1.0-SNAPSHOT"
-  ThisBuild / organization     := "com.shuailli.demo"
-  ```
+```scala
+ThisBuild / scalaVersion     := "2.13.5"
+ThisBuild / version          := "0.1.0-SNAPSHOT"
+ThisBuild / organization     := "com.shuailli.demo"
+```
 
   _`ThisBuild`_ 代表的就是`构建层级`
 
@@ -414,6 +440,7 @@ Scope 轴是一种类型，该类型的每个实例都能定义自己的 scope�
 一个 configuration 定义一种特定的构建，可能包含它自己的 classpath，源文件和生成的包等.
 
 在 sbt 中你可以看到这些 configurations：
+
 - _**`Compile`**_ 定义主构建 (src/main/scala).
 - _**`Test`**_ 定义如何构建测试 (src/test/scala).
 - _**`Runtime`**_ 为 _`run task`_ 定义 _`classpath`_.
