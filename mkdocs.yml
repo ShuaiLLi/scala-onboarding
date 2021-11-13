@@ -12,4 +12,6 @@ theme:
 nav:
   - Introduction: index.md
   - Build Tool:
-    - sbt: sbt.md
+    - sbt: build-tool/sbt.md
+  - Basics:
+    - Know Scala: basics/know-scala.md
