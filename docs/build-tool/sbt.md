@@ -2,14 +2,10 @@
 
 ## What is sbt?
 
----
-
 ### A build tool for Scala (and Java)
 
 - 当`Mark Harrah`创造sbt的时候, 它被称为"Simple Build Tool"
 - 但它第一次公开宣布的时候，名字`sbt`不代表任何东西，它只是 "sbt"，它应该这样写<sup>[1]</sup>
-
----
 
 ### Other options of Scala build tool
 
@@ -20,11 +16,7 @@
 - CBT
 - ...
 
----
-
 ## Why sbt?
-
----
 
 ### The most used scala build tool
 
@@ -38,8 +30,6 @@
 - 支持并行任务执行
 - 支持大量的插件
 - 可以重用Maven或者ivy的repository进行依赖管理
-
----
 
 ## The sbt project structure
   
@@ -59,15 +49,9 @@
   └── target                  ------ build products
   </pre>
 
----
-
 ## Build Definition
 
----
-
 ### Settings Expression
-
----
 
 #### Introduction
 
@@ -81,8 +65,6 @@
 - 操作符用 _`:=`_ 表示
 - 操作符右侧被称为 _`body`_
 
----
-
 #### Keys 
 
 - sbt 预置的keys都被定义在 _`sbt.Keys`_ 里, 预置的Keys会被全部导入到 _`sbt.Keys`_ <sup>3</sup>
@@ -93,8 +75,6 @@
     lazy val customKey = settingKey[String]("The custom key")
     ```
   
----
-
 ### Adding project description
 
 ```scala
@@ -103,8 +83,6 @@ organization := "com.shuailli.demo"
 version := "0.1.0-SNAPSHOT"
 scalaVersion := "2.13.5"
 ```
-
----
 
 ### Adding library dependencies
 
@@ -141,8 +119,6 @@ libraryDependencies += "org.scala-tools" % "scala-stm_2.11" % "0.3"
 libraryDependencies += "org.scala-tools" %% "scala-stm" % "0.3"
 ```
 
----
-
 ### Compiler Options
 
 ```scala
@@ -162,15 +138,11 @@ scalacOptions ++= Seq(
 
 - 一份推荐的compiler options配置可见: [链接](https://tpolecat.github.io/2017/04/25/scalac-flags.html)
 
----
-
 ### Command Alias
 
 ```scala
 addCommandAlias("checkAndTest", ";clean;scalafmtCheck;coverage;test;coverageReport;coverageOff")
 ```
-
----
 
 ### Adding plugins
 
@@ -181,13 +153,9 @@ val kindProjectorVersion = "0.13.0"
 addCompilerPlugin("org.typelevel" %% "kind-projector" % kindProjectorVersion cross CrossVersion.full)
 ```
 
----
-
 ## Build Support Files
 
 目录 _`project`_ 下任何的文件都可以被用在构建过程中.
-
----
 
 ### Specifying the sbt version
 
@@ -200,8 +168,6 @@ sbt.version = 1.4.7
 - 如果指定的 _`sbt`_ 版本在本地不存在, _`sbt launcher`_ 将会在构建开始前自动为你下载.
 - 这个特性会保证本地预装了不同版本 _`sbt`_ 的开发者对同一项目的构建生成一致的构建产物, 因为它将最终使用指定版本的sbt
 
----
-
 ### Organize plugins
 
 - 使用 _`project/plugins.sbt`_ 文件管理 _`sbt`_ 插件
@@ -212,11 +178,7 @@ addSbtPlugin("org.scoverage" % "sbt-scoverage" % "1.6.1")
 addSbtPlugin("org.scalameta" % "sbt-scalafmt" % "2.4.2")
 ```
 
----
-
 ## How to run sbt?
-
----
 
 ### Installation
 
@@ -235,8 +197,6 @@ $ brew install sbt
   - Scala不同于其他语言，Scala主次版本之间的特性差异较大，因此通常都是为每个项目安装特定版本(_`build.sbt`_)的Scala,而不是全局安装，_`sbt`_就可以用来管理每个Scala项目特定的Scala版本.
 
   - 安装 _`sbt`_ 后，默认情况下, _`sbt`_ 会使用和自身版本相应版本的Scala来构建项目
-
----
 
 ### sbt Shell and common commands
 
@@ -259,8 +219,6 @@ $ sbt
 > run
 ```
 
----
-
 ### Batch mode
 
 你也可以用批处理模式来运行 sbt，可以以空格为分隔符指定参数。对于接受参数的 _`sbt`_ 命令，将命令和参数用引号引起来一起传给 _`sbt`_。例如：
@@ -272,8 +230,6 @@ $ sbt clean compile "testOnly TestA TestB"
 在这个例子中，testOnly 有两个参数 TestA 和 TestB。这个命令会按顺序执行（clean， compile， 然后 testOnly）.
 
 批处理模式下，构建将运行的非常慢.
-
----
 
 ### Continuous Build and Test
 
@@ -303,11 +259,7 @@ $ sbt '~ run'
 
   为了区分类Unix系统下和 _`sbt`_ 下的 _`~`_ 前缀(Unix系统下代表当前用户根目录)，在批处理模式下需要使用 _`'`_ 将sbt的命令包起来
 
----
-
 ## Common plugins
-
----
 
 ### Formatter
 
@@ -338,8 +290,6 @@ $ sbt scalafmt
 $ sbt scalafmtCheck
 ```
 
----
-
 ### Package & Release
 
 - 在 _`project/plugins.sbt`_ 文件添加打包插件（产出胖JAR包-一个包含代码和库中所有类文件的JAR文件）
@@ -368,8 +318,6 @@ $ sbt windows:packageBin  # msi package
 $ sbt docker:publishLocal # docker image
 ```
 
----
-
 ### Test & Coverage
 
 - 在 _`project/plugins.sbt`_ 文件添加插件
@@ -397,15 +345,11 @@ $ sbt test
 $ sbt coverageReport
 ```
 
----
-
 ## Scopes
 
 之前提到了 _`key`_ , 实际上可以在不同的上下文中为同一个 _`key`_ 赋予不同的值，每个上下文称之为 _`scope`_
 
 例如：如果在你的构建定义中有多个项目，在每个项目中的 _`version`_ 可以是不同的值.
-
----
 
 ### There are three scope axes
 
@@ -414,8 +358,6 @@ Scope 轴是一种类型，该类型的每个实例都能定义自己的 scope�
 - Projects
 - Configurations
 - Tasks
-
----
 
 ### Scoping by Project axis
 
@@ -433,8 +375,6 @@ ThisBuild / organization     := "com.shuailli.demo"
 
   _`ThisBuild`_ 代表的就是`构建层级`
 
----
-
 ### Scoping by Configuration axis
 
 一个 configuration 定义一种特定的构建，可能包含它自己的 classpath，源文件和生成的包等.
@@ -447,8 +387,6 @@ ThisBuild / organization     := "com.shuailli.demo"
 - _**`Provide`**_ 为 _`compiling task`_ 和 _`test task`_ 定义 _`classpath`_.
 
 默认情况下，和编译、打包、运行相关的所有 _`key`_ 都局限于一个 _`configuration`_，因此在不同的 _`configuration`_ 中可能产生不同的效果。最明显的例子就是 task key：compile，package 和 run； 然而能够 影响 到这些 _`key`_ 的所有其他 _`key`_（例如 sourceDirectories，scalacOptions 和 fullClasspath）也都局限于该 _`configuration`_.
-
----
 
 ### Scoping by Task axis
 
@@ -470,10 +408,8 @@ packageBin / packageOptions := ???
 packageDoc / packageOptions := ???
 ```
 
----
-
 ## Referrences
 
-- [1] sbt Faq, https://www.scala-sbt.org/release/docs/Faq.html
-- [2] 2019 Scala Developer Survey, https://scalacenter.github.io/scala-developer-survey-2019/#what-are-the-*other*-pain-points-to-get-started-in-scala
-- [3] sbt Keys, https://www.scala-sbt.org/1.x/api/sbt/Keys$.html
+- [1] sbt Faq, <https://www.scala-sbt.org/release/docs/Faq.html>
+- [2] 2019 Scala Developer Survey, <https://scalacenter.github.io/scala-developer-survey-2019/#what-are-the-*other*-pain-points-to-get-started-in-scala>
+- [3] sbt Keys, <https://www.scala-sbt.org/1.x/api/sbt/Keys$.html>

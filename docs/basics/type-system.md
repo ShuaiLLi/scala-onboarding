@@ -85,7 +85,67 @@ Tip
 | Char    | 16-bit unsigned Unicode character (0 to 2^16-1, inclusive) |
 | String  | a sequence of Char |
 
-### BigInt and BigDecimal
+### `String` Topic
+
+`Scala`的字符串有很多不错的特性，接下来我们主要讨论几种常见的字符串拼接方法:
+
+首先声明两个字符串变量
+
+```scala
+val firstName = "Shuai"
+val lastName = "Li"
+```
+
+- 使用 `+` 操作符拼接多个字符串
+
+```scala
+val name = firstName + " " + lastName  // Shuai Li
+```
+
+- 使用 `s` 对字符串插值处理
+
+```scala
+val name = s"$firstName $lastName"  // Shuai Li
+```
+
+`s` 字符串插值也支持你将变量用 **花括号** 括起来
+
+```scala
+val name = s"${firstName} ${lastName}"  // Shuai Li
+```
+
+难道 **花括号** 就这？不止，花括号内支持是支持表达式的
+
+```scala
+val calculation_description = s"1 + 1 = ${1 + 1}"  // 1 + 1 = 2
+```
+
+对于一些特殊字符，使用 `s` 插值器时需要注意对这些字符进行 **转义**
+
+```scala
+println(s"The book is $$30.54")  // The book is $30.54
+```
+
+`双引号`也是需要进行 **转义** 的，如下包含正确和错误两个示例:
+
+```scala
+println(s"The focus of this book is on \"clean code\".")  // compile error
+
+println("""The focus of this book is on "clean code".""")  // The focus of this book is on "clean code".
+```
+
+也就是说，`双引号` 的转义需要通过 `三重双引号` 完成
+
+- 使用 `f` 对字符串插值处理
+
+`f` 字符串插值允许创建简单的格式化字符串，类似于其他语言的 `printf`。使用 `f` 插值时，所有变量引用都应该在变量尾部追加一个格式化符号（如 %d），请看如下示例:
+
+```scala
+val money = 7.856
+println(f"$name%s has $money%2.2f yuan left")  // Shuai Li has 7.86 yuan left
+```
+
+### `BigInt and BigDecimal` Topic
 
 针对大数处理场景，`Scala` 提供了两种数据类型:
 
@@ -93,7 +153,7 @@ Tip
 
 - `BigDecimal` 大十进制数(小数)
 
-不同于其在Java中对应的类，`Scala` 中这两种大数数据类型支持所有你习惯使用的数字类型的操作符，一个字: **妙**, 让我们看几个`REPL`环境下的示例:
+不同于其在Java中对应的类，`Scala` 中这两种大数数据类型支持所有你习惯使用的数字类型的操作符，一个字: **妙**, 让我们看几个`REPL`<sup>[1]</sup>环境下的示例:
 
 ```shell
 scala> val bi = BigInt(100000001)
@@ -119,3 +179,9 @@ val res0: scala.math.BigDecimal = 20000.246
 scala> bd * bd
 val res1: scala.math.BigDecimal = 100002460.01512
 ```
+
+## 
+
+## Referrences
+
+- [1] sbt Faq, <https://docs.scala-lang.org/overviews/scala-book/scala-repl.html>
