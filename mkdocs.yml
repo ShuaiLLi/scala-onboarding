@@ -15,3 +15,4 @@ nav:
     - sbt: build-tool/sbt.md
   - Basics:
     - Know Scala: basics/know-scala.md
+    - Type System: basics/type-system.md
