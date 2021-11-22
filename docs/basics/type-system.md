@@ -96,13 +96,13 @@ val firstName = "Shuai"
 val lastName = "Li"
 ```
 
-- 使用 `+` 操作符拼接多个字符串
+#### 使用 `+` 操作符拼接多个字符串
 
 ```scala
 val name = firstName + " " + lastName  // Shuai Li
 ```
 
-- 使用 `s` 对字符串插值处理
+#### 使用 `s` 对字符串插值处理
 
 ```scala
 val name = s"$firstName $lastName"  // Shuai Li
@@ -136,13 +136,47 @@ println("""The focus of this book is on "clean code".""")  // The focus of this 
 
 也就是说，`双引号` 的转义需要通过 `三重双引号` 完成
 
-- 使用 `f` 对字符串插值处理
+#### 使用 `f` 对字符串插值处理
 
 `f` 字符串插值允许创建简单的格式化字符串，类似于其他语言的 `printf`。使用 `f` 插值时，所有变量引用都应该在变量尾部追加一个格式化符号（如 %d），请看如下示例:
 
 ```scala
 val money = 7.856
 println(f"$name%s has $money%2.2f yuan left")  // Shuai Li has 7.86 yuan left
+```
+
+#### 多行字符串处理
+
+在 `Scala` 中我们可以使用三个双引号包裹字符串来达到创建多行字符串的目的, 示例代码如下:
+
+```scala
+val introduction =
+  """My name
+      is Shuai Li..."""
+println(introduction)
+```
+
+我们可以得到如下的输出结果:
+
+```scala
+My name
+       is Shuai Li...
+```
+
+但是如大家所见，这种方法有一个明显的缺陷就是: `除了第一行外的所有行都是带缩进效果的`，为了解决这个问题我们可以将 `|` 符号加到首行外所有行的行首，并在字符串后调用 `stripMargin`(去除边缘空白) 方法, 代码示例如下:
+
+```scala
+val introduction =
+  """My name
+    |is Shuai Li...""".stripMargin
+println(introduction)
+```
+
+我们可以得到如下的输出结果:
+
+```scala
+My name
+is Shuai Li...
 ```
 
 ### `BigInt and BigDecimal` Topic
@@ -180,8 +214,6 @@ scala> bd * bd
 val res1: scala.math.BigDecimal = 100002460.01512
 ```
 
-## 
-
 ## Referrences
 
-- [1] sbt Faq, <https://docs.scala-lang.org/overviews/scala-book/scala-repl.html>
+- [1] Scala REPL, <https://docs.scala-lang.org/overviews/scala-book/scala-repl.html>
