@@ -230,7 +230,7 @@ i match {
 }
 ```
 
-## "try/catch/finally" Expressions
+## "try/catch/finally" Structure
 
 你可以使用"try/catch/finally"来捕获和管理异常. Scala中使用`case`语句来匹配可能发生的不同类型的异常, 如下是一个基本的代码示例:
 
