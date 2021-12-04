@@ -13,7 +13,7 @@ Scala也有几个独特的控制结构，如下所示:
 
 接下来详细讲解这些控制结构.
 
-## "if/then/else" Structure
+## **_if/then/else_** Structure
 
 ### 三种常见的代码示例
 
@@ -65,7 +65,7 @@ val minValue = if (x < y) x else y
 if (a == b) doSomething() // This is a statements, is for side-effects
 ```
 
-## "for loops" Structure
+## **_for loops_** Structure
 
 for循环最简单的使用场景就是用来遍历容器中的元素，如下是一个代码示例:
 
@@ -116,7 +116,7 @@ scores.foreach {
 }
 ```
 
-## "for" Expressions
+## **_for_** Expressions
 
 如何你还能想起我们在"if/then/else" Structure那一节中使用的"面向表达式编程"(EOP)以及表达式和语句之间的差异，你会发现我们上一节中使用 for 和 foreach 方法作为一种产生"副作用"的工具，我们利用他们和 println 方法将容器中元素的值打印出来.
 
@@ -136,7 +136,7 @@ Tips:
 
 - 注意此处的`yield`关键字, 他的意思是我要根据已有的容器产出一个新容器，这里是"产出"的意思
 
-## "match" Expressions
+## **_match_** Expressions
 
 Scala设计了一种"match"表达式, 它类似于Java中的`switch`语句, 如下为代码示例:
 
@@ -230,7 +230,7 @@ i match {
 }
 ```
 
-## "try/catch/finally" Structure
+## **_try/catch/finally_** Structure
 
 你可以使用"try/catch/finally"来捕获和管理异常. Scala中使用`case`语句来匹配可能发生的不同类型的异常, 如下是一个基本的代码示例:
 
