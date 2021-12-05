@@ -6,7 +6,39 @@
 
 ## Basics
 
+### Know Scala
+
 ### Type System
+
+#### Build-in Data Types
+
+##### Boolean
+
+##### Byte
+
+##### Short
+
+##### Int
+
+##### Long
+
+##### Float
+
+##### Double
+
+##### Char
+
+##### String
+
+#### Variables
+
+##### var
+
+##### val
+
+#### Classes
+
+#### Traits
 
 ### Control Structures
 
