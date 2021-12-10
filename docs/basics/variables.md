@@ -24,7 +24,7 @@ i = 456            // compile pass
 ## The Type is Optional
 
 上一个Section的示例表明`Scala`编译器足够智能，在编译期间可以通过 `=` 右侧的变量值推断出变量的数据类型.当然你也可以显式地声明变量的数据类型，示例代码如下：
-
+  
 ```scala
 val s: String = "hello"
 var i: Int = 123
