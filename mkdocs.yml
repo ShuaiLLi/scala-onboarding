@@ -18,5 +18,6 @@ nav:
     - Type System:
       - Build-in Data Types: basics/build-in-data-types.md
       - Variables: basics/variables.md
-      - Class: basics/classes.md 
+      - Class: basics/classes.md
+      - Trait: basics/traits.md
     - Control Structures: basics/control-structures.md
