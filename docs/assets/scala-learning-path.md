@@ -40,6 +40,12 @@
 
 #### Traits
 
+##### Abstract Classes
+
+#### Case Classes and Case Objects
+
+#### Practice designing bussiness models for FP
+
 ### Control Structures
 
 #### **_if/then/else_** Structure

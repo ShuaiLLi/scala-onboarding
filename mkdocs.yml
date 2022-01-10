@@ -20,4 +20,6 @@ nav:
       - Variables: basics/variables.md
       - Class: basics/classes.md
       - Trait: basics/traits.md
+      - Companion Object: basics/companion-object.md
+      - Case Classes And Case Objects: basics/case-classes-and-case-objects.md
     - Control Structures: basics/control-structures.md
