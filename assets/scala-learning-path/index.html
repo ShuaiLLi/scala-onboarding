@@ -1,0 +1,967 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../scala-favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.2.5">
+    
+    
+      
+        <title>Scala Learning Path - Scala Onboarding</title>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/main.2d9f7617.min.css">
+      
+        
+        <link rel="stylesheet" href="../stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Museo+Sans:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Museo Sans";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#scala-learning-path" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Scala Onboarding" class="md-header__button md-logo" aria-label="Scala Onboarding" data-md-component="logo">
+      
+  <img src="../scala-favicon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Scala Onboarding
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Scala Learning Path
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Scala Onboarding" class="md-nav__button md-logo" aria-label="Scala Onboarding" data-md-component="logo">
+      
+  <img src="../scala-favicon.png" alt="logo">
+
+    </a>
+    Scala Onboarding
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Build Tool
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Build Tool" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Build Tool
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../build-tool/sbt/" class="md-nav__link">
+        sbt
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Basics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Basics" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Basics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/know-scala/" class="md-nav__link">
+        Know Scala
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          Type System
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Type System" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Type System
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/build-in-data-types/" class="md-nav__link">
+        Build-in Data Types
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/variables/" class="md-nav__link">
+        Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/classes/" class="md-nav__link">
+        Class
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/traits/" class="md-nav__link">
+        Trait
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/companion-object/" class="md-nav__link">
+        Companion Object
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/case-classes-and-case-objects/" class="md-nav__link">
+        Case Classes And Case Objects
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/control-structures/" class="md-nav__link">
+        Control Structures
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#build-tool" class="md-nav__link">
+    Build Tool
+  </a>
+  
+    <nav class="md-nav" aria-label="Build Tool">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sbt" class="md-nav__link">
+    sbt
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basics" class="md-nav__link">
+    Basics
+  </a>
+  
+    <nav class="md-nav" aria-label="Basics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#know-scala" class="md-nav__link">
+    Know Scala
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type-system" class="md-nav__link">
+    Type System
+  </a>
+  
+    <nav class="md-nav" aria-label="Type System">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#build-in-data-types" class="md-nav__link">
+    Build-in Data Types
+  </a>
+  
+    <nav class="md-nav" aria-label="Build-in Data Types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#boolean" class="md-nav__link">
+    Boolean
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#byte" class="md-nav__link">
+    Byte
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#short" class="md-nav__link">
+    Short
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#int" class="md-nav__link">
+    Int
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#long" class="md-nav__link">
+    Long
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#float" class="md-nav__link">
+    Float
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#double" class="md-nav__link">
+    Double
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#char" class="md-nav__link">
+    Char
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#string" class="md-nav__link">
+    String
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variables" class="md-nav__link">
+    Variables
+  </a>
+  
+    <nav class="md-nav" aria-label="Variables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#var" class="md-nav__link">
+    var
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#val" class="md-nav__link">
+    val
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#classes" class="md-nav__link">
+    Classes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#traits" class="md-nav__link">
+    Traits
+  </a>
+  
+    <nav class="md-nav" aria-label="Traits">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#abstract-classes" class="md-nav__link">
+    Abstract Classes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#case-classes-and-case-objects" class="md-nav__link">
+    Case Classes and Case Objects
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#practice-designing-bussiness-models-for-fp" class="md-nav__link">
+    Practice designing bussiness models for FP
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#control-structures" class="md-nav__link">
+    Control Structures
+  </a>
+  
+    <nav class="md-nav" aria-label="Control Structures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ifthenelse-structure" class="md-nav__link">
+    if/then/else Structure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-loops-structure" class="md-nav__link">
+    for loops Structure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-expressions" class="md-nav__link">
+    for Expressions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#match-expressions" class="md-nav__link">
+    match Expressions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trycatchfinally-structure" class="md-nav__link">
+    try/catch/finally Structure
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    Features
+  </a>
+  
+    <nav class="md-nav" aria-label="Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#implicit" class="md-nav__link">
+    implicit
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#collections" class="md-nav__link">
+    Collections
+  </a>
+  
+    <nav class="md-nav" aria-label="Collections">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arraybuffer" class="md-nav__link">
+    ArrayBuffer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list" class="md-nav__link">
+    List
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vector" class="md-nav__link">
+    Vector
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#map" class="md-nav__link">
+    Map
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set" class="md-nav__link">
+    Set
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tuple" class="md-nav__link">
+    Tuple
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option" class="md-nav__link">
+    Option
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#try" class="md-nav__link">
+    Try
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#either" class="md-nav__link">
+    Either
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#functional-programming" class="md-nav__link">
+    Functional Programming
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-libraries" class="md-nav__link">
+    Common Libraries
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Libraries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cats" class="md-nav__link">
+    cats
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cats-effect" class="md-nav__link">
+    cats-effect
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http4s" class="md-nav__link">
+    http4s
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#circle" class="md-nav__link">
+    circle
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#doobie" class="md-nav__link">
+    doobie
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scalatest" class="md-nav__link">
+    scalatest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specs2" class="md-nav__link">
+    specs2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mockito" class="md-nav__link">
+    mockito
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scalapact" class="md-nav__link">
+    scalapact
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="scala-learning-path">Scala Learning Path</h1>
+<h2 id="build-tool">Build Tool</h2>
+<h3 id="sbt">sbt</h3>
+<h2 id="basics">Basics</h2>
+<h3 id="know-scala">Know Scala</h3>
+<h3 id="type-system">Type System</h3>
+<h4 id="build-in-data-types">Build-in Data Types</h4>
+<h5 id="boolean">Boolean</h5>
+<h5 id="byte">Byte</h5>
+<h5 id="short">Short</h5>
+<h5 id="int">Int</h5>
+<h5 id="long">Long</h5>
+<h5 id="float">Float</h5>
+<h5 id="double">Double</h5>
+<h5 id="char">Char</h5>
+<h5 id="string">String</h5>
+<h4 id="variables">Variables</h4>
+<h5 id="var">var</h5>
+<h5 id="val">val</h5>
+<h4 id="classes">Classes</h4>
+<h4 id="traits">Traits</h4>
+<h5 id="abstract-classes">Abstract Classes</h5>
+<h4 id="case-classes-and-case-objects">Case Classes and Case Objects</h4>
+<h4 id="practice-designing-bussiness-models-for-fp">Practice designing bussiness models for FP</h4>
+<h3 id="control-structures">Control Structures</h3>
+<h4 id="ifthenelse-structure"><strong><em>if/then/else</em></strong> Structure</h4>
+<h4 id="for-loops-structure"><strong><em>for loops</em></strong> Structure</h4>
+<h4 id="for-expressions"><strong><em>for</em></strong> Expressions</h4>
+<h4 id="match-expressions"><strong><em>match</em></strong> Expressions</h4>
+<h4 id="trycatchfinally-structure"><strong><em>try/catch/finally</em></strong> Structure</h4>
+<h3 id="features">Features</h3>
+<h4 id="implicit">implicit</h4>
+<h3 id="collections">Collections</h3>
+<h4 id="arraybuffer">ArrayBuffer</h4>
+<h4 id="list">List</h4>
+<h4 id="vector">Vector</h4>
+<h4 id="map">Map</h4>
+<h4 id="set">Set</h4>
+<h4 id="tuple">Tuple</h4>
+<h4 id="option">Option</h4>
+<h4 id="try">Try</h4>
+<h4 id="either">Either</h4>
+<h2 id="functional-programming">Functional Programming</h2>
+<h2 id="common-libraries">Common Libraries</h2>
+<h3 id="cats">cats</h3>
+<h3 id="cats-effect">cats-effect</h3>
+<h3 id="http4s">http4s</h3>
+<h3 id="circle">circle</h3>
+<h3 id="doobie">doobie</h3>
+<h3 id="scalatest">scalatest</h3>
+<h3 id="specs2">specs2</h3>
+<h3 id="mockito">mockito</h3>
+<h3 id="scalapact">scalapact</h3>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../javascripts/workers/search.bd0b6b67.min.js"}</script>
+    
+    
+      <script src="../javascripts/bundle.467223ff.min.js"></script>
+      
+    
+  </body>
+</html>

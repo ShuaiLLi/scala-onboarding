@@ -1,0 +1,934 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../assets/scala-favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.2.5">
+    
+    
+      
+        <title>Case Classes And Case Objects - Scala Onboarding</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2d9f7617.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Museo+Sans:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Museo Sans";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#case-classes-and-case-objects" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Scala Onboarding" class="md-header__button md-logo" aria-label="Scala Onboarding" data-md-component="logo">
+      
+  <img src="../../assets/scala-favicon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Scala Onboarding
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Case Classes And Case Objects
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Scala Onboarding" class="md-nav__button md-logo" aria-label="Scala Onboarding" data-md-component="logo">
+      
+  <img src="../../assets/scala-favicon.png" alt="logo">
+
+    </a>
+    Scala Onboarding
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Build Tool
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Build Tool" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Build Tool
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../build-tool/sbt/" class="md-nav__link">
+        sbt
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Basics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Basics" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Basics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../know-scala/" class="md-nav__link">
+        Know Scala
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          Type System
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Type System" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Type System
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../build-in-data-types/" class="md-nav__link">
+        Build-in Data Types
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../variables/" class="md-nav__link">
+        Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../classes/" class="md-nav__link">
+        Class
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../traits/" class="md-nav__link">
+        Trait
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../companion-object/" class="md-nav__link">
+        Companion Object
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Case Classes And Case Objects
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Case Classes And Case Objects
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#case-classes" class="md-nav__link">
+    Case Classes
+  </a>
+  
+    <nav class="md-nav" aria-label="Case Classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#with-apply-you-dont-need-new" class="md-nav__link">
+    With apply you don’t need new
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#no-mutator-methods" class="md-nav__link">
+    No mutator methods
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#an-unapply-method" class="md-nav__link">
+    An unapply method
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#copy-method" class="md-nav__link">
+    copy method
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#equals-and-hashcode-methods" class="md-nav__link">
+    equals and hashCode methods
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tostring-methods" class="md-nav__link">
+    toString methods
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#case-objects" class="md-nav__link">
+    Case Objects
+  </a>
+  
+    <nav class="md-nav" aria-label="Case Objects">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#case-objects_1" class="md-nav__link">
+    Case objects
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-enumerations-with-case-objects" class="md-nav__link">
+    Creating enumerations with case objects
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-case-objects-as-messages" class="md-nav__link">
+    Using case objects as messages
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../control-structures/" class="md-nav__link">
+        Control Structures
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#case-classes" class="md-nav__link">
+    Case Classes
+  </a>
+  
+    <nav class="md-nav" aria-label="Case Classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#with-apply-you-dont-need-new" class="md-nav__link">
+    With apply you don’t need new
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#no-mutator-methods" class="md-nav__link">
+    No mutator methods
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#an-unapply-method" class="md-nav__link">
+    An unapply method
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#copy-method" class="md-nav__link">
+    copy method
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#equals-and-hashcode-methods" class="md-nav__link">
+    equals and hashCode methods
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tostring-methods" class="md-nav__link">
+    toString methods
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#case-objects" class="md-nav__link">
+    Case Objects
+  </a>
+  
+    <nav class="md-nav" aria-label="Case Objects">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#case-objects_1" class="md-nav__link">
+    Case objects
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-enumerations-with-case-objects" class="md-nav__link">
+    Creating enumerations with case objects
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-case-objects-as-messages" class="md-nav__link">
+    Using case objects as messages
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="case-classes-and-case-objects">Case Classes And Case Objects</h1>
+<h2 id="case-classes">Case Classes</h2>
+<p>Scala为函数式编程提供的特性之一为<code>case class</code>. <code>case class</code>拥有所有普通<code>class</code>的功能，同时还有更多的扩展功能. 当编译器检查到<code>class</code>前边有<code>case</code>关键字时，它会为你自动生成一些功能代码, 主要包含如下几种特性:</p>
+<ul>
+<li>
+<p><code>case class</code>的构造器参数默认为公共的<code>val</code>变量, 因此每个参数变量的访问方法也会被自动生成.</p>
+</li>
+<li>
+<p><code>apply</code> 方法将会在<code>case class</code>的伴生对象中被生成, 因此你不再需要使用<code>new</code>关键字来创建<code>case class</code>的实例.</p>
+</li>
+<li>
+<p>默认生成<code>unapply</code> 方法，你将可以在<code>match</code>表达式中有更多的方式去使用<code>case class</code>.</p>
+</li>
+<li>
+<p>默认生成<code>copy</code>方法，你可能在Scala的OOP中不会使用它，但在Scala的FP中一定会用到它.</p>
+</li>
+<li>
+<p>默认生成<code>equals</code>和<code>hashCode</code>方法，你不仅可以比较对象，同时将这类对象作为集合的<code>key</code>将更加第容易.</p>
+</li>
+<li>
+<p>默认生成<code>toString</code>方法，这个特性在你debug的时候很有用.</p>
+</li>
+</ul>
+<p>接下来我们将通过实例更多地了解这些特性.</p>
+<h3 id="with-apply-you-dont-need-new">With apply you don’t need new</h3>
+<p>当你定义一个<code>case class</code>，你将不再需要使用<code>new</code>关键字来创建新的实例, 代码示例如下:</p>
+<pre><code class="language-scala">case class Person(name: String, age: Int)
+</code></pre>
+<pre><code class="language-scala">val person = Person(&quot;Shuai Li&quot;, 18)
+println(s&quot;${person.name}'s age is ${person.age} years old.&quot;)
+</code></pre>
+<p>不需要<code>new</code>关键字创建对象的实例是因为<code>apply</code>方法已经在<code>case class</code>的伴生对象中被生成, <code>apply</code>方法会用与生成类的实例对象.</p>
+<h3 id="no-mutator-methods">No mutator methods</h3>
+<p><code>case class</code>的构造参数默认是val不可变的，因此编译器将不会为<code>case class</code>生成字段的修改方法, 我们用如下代码示例进行实验:</p>
+<pre><code class="language-scala">val person = Person(&quot;Shuai Li&quot;, 18)
+person.age = 20 // compiler error: reassignment to val, can't mutate the `age` field
+</code></pre>
+<p>这是因为函数式编程从来不会允许修改对象的属性，因此<code>case class</code>构造参数默认为val的设计是有道理的.</p>
+<h3 id="an-unapply-method">An unapply method</h3>
+<p><code>case class</code>有一个好的特性就是它会在它的伴生对象中自动生成<code>unapply</code>方法，用于模式匹配. 如果没有<code>unapply</code>方法, 类将无法进行模式匹配, 关于<code>unapply</code>方法的写法可见如下代码示例:</p>
+<pre><code class="language-scala">sealed trait Pet
+
+object Pet {
+  final class Dog(val name: String) extends Pet {}
+
+  final class Cat(val name: String) extends Pet {}
+
+  object Dog {
+    def unapply(arg: Dog): Option[String] = Some(arg.name)
+  }
+
+  object Cat {
+    def unapply(arg: Cat): Option[String] = Some(arg.name)
+  }
+}
+</code></pre>
+<p>我们写一个实际用例来验证他的有效性:</p>
+<pre><code class="language-scala">object Main extends App {
+  def printPetName(pet: Pet): Unit =
+    pet match {
+      case Dog(name) =&gt; println(s&quot;The dog's name is $name&quot;)
+      case Cat(name) =&gt; println(s&quot;The cat's name is $name&quot;)
+    }
+
+  printPetName(new Dog(&quot;Tom&quot;))
+}
+</code></pre>
+<p>执行如上代码我们会得到这样的输出: "The dog's name is Tom", 我们可以看到上述实现过程手动定义了<code>unapply</code>方法，但是当我们使用<code>case class</code>就不再需要手动定义<code>unapply</code>方法就可以使用模式匹配, 代码示例如下:</p>
+<pre><code class="language-scala">sealed trait Pet
+
+object Pet {
+  final case class Dog(name: String) extends Pet {}
+  final case class Cat(name: String) extends Pet {}
+}
+</code></pre>
+<pre><code class="language-scala">object Main extends App {
+  def printPetName(pet: Pet): Unit =
+    pet match {
+      case Dog(name) =&gt; println(s&quot;The dog's name is $name&quot;)
+      case Cat(name) =&gt; println(s&quot;The cat's name is $name&quot;)
+    }
+
+  printPetName(Dog(&quot;Tom&quot;))
+}
+</code></pre>
+<p>我们可以得到同样的输出: "The dog's name is Tom".</p>
+<p>我们可以发现所有的<code>unapply</code>方法的类型签名符合某个标准。从技术角度讲，这些示例中显示的特定类型的模式匹配称为构造函数模式。</p>
+<p>Scala标准是<code>unapply</code>方法返回一个Option元组，这个元祖中返回<code>case class</code>构造函数字段, 代码示例中的 <code>Option[String]</code>就是这样的元祖，只不过我们的<code>case class</code>构造函数只有一个字段而已.</p>
+<h3 id="copy-method">copy method</h3>
+<p><code>copy</code>方法也是被自动生成的, 在如下场景中<code>copy</code>方法是非常有帮助的:</p>
+<ul>
+<li>克隆一个对象</li>
+<li>在克隆过程中更新一个或多个字段</li>
+</ul>
+<p>可见如下代码示例:</p>
+<pre><code class="language-scala">val oldDog = Dog(&quot;Tom&quot;)
+val newDog = oldDog.copy(name = &quot;Peter&quot;)
+</code></pre>
+<p>大家可能疑惑为什么重点强调<code>copy</code>方法，这是因为在函数式编程中你永远不会修改对象的数据，所有的对象均为不可变对象, 因此我们需要使用<code>copy</code>来从一个现存的示例创建一个新的实例，这个过程也称为 "复制时更新".</p>
+<h3 id="equals-and-hashcode-methods">equals and hashCode methods</h3>
+<p><code>case class</code>也有自动生成的<code>equals</code>和<code>hashCode</code>方法, 因此它的实例之间可以进行比较, 见如下代码示例:</p>
+<pre><code class="language-scala">scala&gt; case class Person(name: String, relation: String)
+defined class Person
+
+scala&gt; val christina = Person(&quot;Christina&quot;, &quot;niece&quot;)
+christina: Person = Person(Christina,niece)
+
+scala&gt; val hannah = Person(&quot;Hannah&quot;, &quot;niece&quot;)
+hannah: Person = Person(Hannah,niece)
+
+scala&gt; christina == hannah
+res1: Boolean = false
+</code></pre>
+<p>这些方法会帮助你更容易地在容器中使用你的对象，比如<code>set</code>、<code>map</code>, 通常情况下你可以在函数式编程中直接将对象作为key.</p>
+<h3 id="tostring-methods">toString methods</h3>
+<p><code>case class</code>也会有一个默认的<code>toString</code>方法实现，它至少能在Debug的时候帮助到你.</p>
+<h3 id="summary">Summary</h3>
+<p>尽管所有这些特性对函数式编程都有很大好处，正如他们在《Scala 编程（Odersky、Spoon 和 Venners）一书中所写的那样，“案例类的最大优势在于它们支持模式匹配。”模式匹配是函数式编程(FP)语言的一个主要特性，<code>Scala</code>的<code>case class</code>提供了一种在匹配表达式和其他领域实现模式匹配的简单方法.</p>
+<h2 id="case-objects">Case Objects</h2>
+<p>在了解<code>case object</code>之前，我们应该了解一些关于“常规”的Scala对象的背景知识. 一般情况下当我们想创建一个单例对象时，会使用Scala对象. "与类的单个实例无关的方法和值应该属于单例对象，使用关键字 object 而不是 class 表示."</p>
+<p>一个常见的<code>object</code>使用场景是创建一个“工具集”对象时，代码示例如下：</p>
+<pre><code class="language-scala">object TimeOps {
+  def convertDate2Timestamp(date: String, pattern: String): Long = ...
+  def dayOfWeek(date: String): Int = ...
+  def isReskDay(date: String): Boolean = ...
+}
+</code></pre>
+<p>这是使用<code>object</code>结构的通用方式.</p>
+<h3 id="case-objects_1">Case objects</h3>
+<p><code>case object</code>类似于<code>object</code>，就像<code>case class</code>比普通的<code>class</code>具有更多特性一样，<code>case object</code>比普通的<code>object</code>具有更多特性。其特性如下：</p>
+<ul>
+<li>它是可序列化的</li>
+<li>它具有默认的<code>hashCode</code>方法实现</li>
+<li>它具有改进的<code>toString</code>方法实现</li>
+</ul>
+<p>正是由于这些特性，<code>case object</code>主要在两个场景使用：</p>
+<ul>
+<li>创建枚举时</li>
+<li>为要在其他对象之间传递的"消息"创建容器时（例如使用 <a href="https://akka.io/">Akka</a> actor 库）</li>
+</ul>
+<h3 id="creating-enumerations-with-case-objects">Creating enumerations with case objects</h3>
+<p>Scala中组织枚举的具体方式，见如下代码示例:</p>
+<pre><code class="language-scala">sealed trait Channel
+
+object Channel {
+  case object Sold     extends Channel
+  case object Leased   extends Channel
+}
+</code></pre>
+<p>我们可以同如下代码所示使用这些枚举:</p>
+<pre><code class="language-scala">case class House (
+  price: BigDecimal,
+  channel: Channel,
+  area: Double
+)
+</code></pre>
+<h3 id="using-case-objects-as-messages">Using case objects as messages</h3>
+<p><code>case object</code>的另一个使用场景是，当你想要对"消息"的概念进行建模时. 例如，假设你正在编写一个像苹果Siri这样的应用程序，并且你希望能够传递"说话"消息，例如"说出随附的文本"，"停止说话"，"暂停"和"恢复"。在 Scala 中，你可以为这些消息创建单例对象，代码示例如下:</p>
+<pre><code class="language-scala">case class StartSpeakingMessage(textToSpeak: String)
+case object StopSpeakingMessage
+case object PauseSpeakingMessage
+case object ResumeSpeakingMessage
+</code></pre>
+<p>注意，<code>StartSpeakMessage</code>被定义为<code>case class</code>而不是<code>case object</code>. 这是因为对象不能有任何构造函数参数.</p>
+<p>给定这些消息，如果Siri是使用Akka库编写的，那么您将在"speak"类中找到这样的代码：</p>
+<pre><code class="language-scala">class Speak extends Actor {
+  def receive = {
+    case StartSpeakingMessage(textToSpeak) =&gt;
+        // code to speak the text
+    case StopSpeakingMessage =&gt;
+        // code to stop speaking
+    case PauseSpeakingMessage =&gt;
+        // code to pause speaking
+    case ResumeSpeakingMessage =&gt;
+        // code to resume speaking
+  }
+}
+</code></pre>
+<p>如你所见, 这是在 Scala 应用程序中传递消息的好方法.</p>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../companion-object/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Companion Object" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Companion Object
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../control-structures/" class="md-footer__link md-footer__link--next" aria-label="Next: Control Structures" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Control Structures
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.bd0b6b67.min.js"}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.467223ff.min.js"></script>
+      
+    
+  </body>
+</html>

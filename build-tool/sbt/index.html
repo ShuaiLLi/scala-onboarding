@@ -1,0 +1,1458 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../assets/scala-favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.2.5">
+    
+    
+      
+        <title>sbt - Scala Onboarding</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2d9f7617.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Museo+Sans:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Museo Sans";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#sbt" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Scala Onboarding" class="md-header__button md-logo" aria-label="Scala Onboarding" data-md-component="logo">
+      
+  <img src="../../assets/scala-favicon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Scala Onboarding
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              sbt
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Scala Onboarding" class="md-nav__button md-logo" aria-label="Scala Onboarding" data-md-component="logo">
+      
+  <img src="../../assets/scala-favicon.png" alt="logo">
+
+    </a>
+    Scala Onboarding
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Build Tool
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Build Tool" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Build Tool
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          sbt
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        sbt
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-sbt" class="md-nav__link">
+    What is sbt?
+  </a>
+  
+    <nav class="md-nav" aria-label="What is sbt?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-build-tool-for-scala-and-java" class="md-nav__link">
+    A build tool for Scala (and Java)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-options-of-scala-build-tool" class="md-nav__link">
+    Other options of Scala build tool
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-sbt" class="md-nav__link">
+    Why sbt?
+  </a>
+  
+    <nav class="md-nav" aria-label="Why sbt?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-most-used-scala-build-tool" class="md-nav__link">
+    The most used scala build tool
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-sbt-project-structure" class="md-nav__link">
+    The sbt project structure
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#build-definition" class="md-nav__link">
+    Build Definition
+  </a>
+  
+    <nav class="md-nav" aria-label="Build Definition">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#settings-expression" class="md-nav__link">
+    Settings Expression
+  </a>
+  
+    <nav class="md-nav" aria-label="Settings Expression">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#keys" class="md-nav__link">
+    Keys
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-project-description" class="md-nav__link">
+    Adding project description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-library-dependencies" class="md-nav__link">
+    Adding library dependencies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compiler-options" class="md-nav__link">
+    Compiler Options
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#command-alias" class="md-nav__link">
+    Command Alias
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-plugins" class="md-nav__link">
+    Adding plugins
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#build-support-files" class="md-nav__link">
+    Build Support Files
+  </a>
+  
+    <nav class="md-nav" aria-label="Build Support Files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#specifying-the-sbt-version" class="md-nav__link">
+    Specifying the sbt version
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#organize-plugins" class="md-nav__link">
+    Organize plugins
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-run-sbt" class="md-nav__link">
+    How to run sbt?
+  </a>
+  
+    <nav class="md-nav" aria-label="How to run sbt?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    Installation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sbt-shell-and-common-commands" class="md-nav__link">
+    sbt Shell and common commands
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#batch-mode" class="md-nav__link">
+    Batch mode
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#continuous-build-and-test" class="md-nav__link">
+    Continuous Build and Test
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-plugins" class="md-nav__link">
+    Common plugins
+  </a>
+  
+    <nav class="md-nav" aria-label="Common plugins">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#formatter" class="md-nav__link">
+    Formatter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#package-release" class="md-nav__link">
+    Package &amp; Release
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-coverage" class="md-nav__link">
+    Test &amp; Coverage
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scopes" class="md-nav__link">
+    Scopes
+  </a>
+  
+    <nav class="md-nav" aria-label="Scopes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#there-are-three-scope-axes" class="md-nav__link">
+    There are three scope axes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scoping-by-project-axis" class="md-nav__link">
+    Scoping by Project axis
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scoping-by-configuration-axis" class="md-nav__link">
+    Scoping by Configuration axis
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scoping-by-task-axis" class="md-nav__link">
+    Scoping by Task axis
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referrences" class="md-nav__link">
+    Referrences
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Basics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Basics" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Basics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/know-scala/" class="md-nav__link">
+        Know Scala
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          Type System
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Type System" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Type System
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/build-in-data-types/" class="md-nav__link">
+        Build-in Data Types
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/variables/" class="md-nav__link">
+        Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/classes/" class="md-nav__link">
+        Class
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/traits/" class="md-nav__link">
+        Trait
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/companion-object/" class="md-nav__link">
+        Companion Object
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/case-classes-and-case-objects/" class="md-nav__link">
+        Case Classes And Case Objects
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/control-structures/" class="md-nav__link">
+        Control Structures
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-sbt" class="md-nav__link">
+    What is sbt?
+  </a>
+  
+    <nav class="md-nav" aria-label="What is sbt?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-build-tool-for-scala-and-java" class="md-nav__link">
+    A build tool for Scala (and Java)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-options-of-scala-build-tool" class="md-nav__link">
+    Other options of Scala build tool
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-sbt" class="md-nav__link">
+    Why sbt?
+  </a>
+  
+    <nav class="md-nav" aria-label="Why sbt?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-most-used-scala-build-tool" class="md-nav__link">
+    The most used scala build tool
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-sbt-project-structure" class="md-nav__link">
+    The sbt project structure
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#build-definition" class="md-nav__link">
+    Build Definition
+  </a>
+  
+    <nav class="md-nav" aria-label="Build Definition">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#settings-expression" class="md-nav__link">
+    Settings Expression
+  </a>
+  
+    <nav class="md-nav" aria-label="Settings Expression">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#keys" class="md-nav__link">
+    Keys
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-project-description" class="md-nav__link">
+    Adding project description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-library-dependencies" class="md-nav__link">
+    Adding library dependencies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compiler-options" class="md-nav__link">
+    Compiler Options
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#command-alias" class="md-nav__link">
+    Command Alias
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-plugins" class="md-nav__link">
+    Adding plugins
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#build-support-files" class="md-nav__link">
+    Build Support Files
+  </a>
+  
+    <nav class="md-nav" aria-label="Build Support Files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#specifying-the-sbt-version" class="md-nav__link">
+    Specifying the sbt version
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#organize-plugins" class="md-nav__link">
+    Organize plugins
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-run-sbt" class="md-nav__link">
+    How to run sbt?
+  </a>
+  
+    <nav class="md-nav" aria-label="How to run sbt?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    Installation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sbt-shell-and-common-commands" class="md-nav__link">
+    sbt Shell and common commands
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#batch-mode" class="md-nav__link">
+    Batch mode
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#continuous-build-and-test" class="md-nav__link">
+    Continuous Build and Test
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-plugins" class="md-nav__link">
+    Common plugins
+  </a>
+  
+    <nav class="md-nav" aria-label="Common plugins">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#formatter" class="md-nav__link">
+    Formatter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#package-release" class="md-nav__link">
+    Package &amp; Release
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-coverage" class="md-nav__link">
+    Test &amp; Coverage
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scopes" class="md-nav__link">
+    Scopes
+  </a>
+  
+    <nav class="md-nav" aria-label="Scopes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#there-are-three-scope-axes" class="md-nav__link">
+    There are three scope axes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scoping-by-project-axis" class="md-nav__link">
+    Scoping by Project axis
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scoping-by-configuration-axis" class="md-nav__link">
+    Scoping by Configuration axis
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scoping-by-task-axis" class="md-nav__link">
+    Scoping by Task axis
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referrences" class="md-nav__link">
+    Referrences
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="sbt">sbt</h1>
+<h2 id="what-is-sbt">What is sbt?</h2>
+<h3 id="a-build-tool-for-scala-and-java">A build tool for Scala (and Java)</h3>
+<ul>
+<li>当<code>Mark Harrah</code>创造sbt的时候, 它被称为"Simple Build Tool"</li>
+<li>但它第一次公开宣布的时候，名字<code>sbt</code>不代表任何东西，它只是 "sbt"，它应该这样写<sup>[1]</sup></li>
+</ul>
+<h3 id="other-options-of-scala-build-tool">Other options of Scala build tool</h3>
+<ul>
+<li>Java build tools, like ant, maven, gradle</li>
+<li>Mill</li>
+<li>Fury</li>
+<li>seed</li>
+<li>CBT</li>
+<li>...</li>
+</ul>
+<h2 id="why-sbt">Why sbt?</h2>
+<h3 id="the-most-used-scala-build-tool">The most used scala build tool</h3>
+<ul>
+<li>Scala官方推荐</li>
+<li>93.6% Scala开发者的选择<sup>[2]</sup></li>
+<li>使用Scala作为DSL定义build文件</li>
+<li>市面上几乎所有的Scala指南都是基于<code>sbt</code></li>
+<li>可以混合构建Java和Scala项目</li>
+<li>增量编译(优秀的增量编译设计)</li>
+<li>通过触发执行(trigger execution)特性支持持续的编译与测试(file changes watch)</li>
+<li>支持并行任务执行</li>
+<li>支持大量的插件</li>
+<li>可以重用Maven或者ivy的repository进行依赖管理</li>
+</ul>
+<h2 id="the-sbt-project-structure">The sbt project structure</h2>
+<pre>
+  ├── build.sbt              ------ build definition file
+  ├── project                ------ build support files
+  │   ├── build.properties
+  │   ├── plugins.sbt
+  │   └── project
+  ├── src
+  │   ├── main
+  │   │   ├── resources
+  │   │   └── scala
+  │   └── test
+  │       ├── resources
+  │       └── scala
+  └── target                  ------ build products
+  </pre>
+
+<h2 id="build-definition">Build Definition</h2>
+<h3 id="settings-expression">Settings Expression</h3>
+<h4 id="introduction">Introduction</h4>
+<pre><code class="language-scala">{key} := {body}
+</code></pre>
+<p>配置表达式包含如下三部分:</p>
+<ul>
+<li>操作符左侧被称为 <em><code>key</code></em></li>
+<li>操作符用 <em><code>:=</code></em> 表示</li>
+<li>操作符右侧被称为 <em><code>body</code></em></li>
+</ul>
+<h4 id="keys">Keys</h4>
+<ul>
+<li>
+<p>sbt 预置的keys都被定义在 <em><code>sbt.Keys</code></em> 里, 预置的Keys会被全部导入到 <em><code>sbt.Keys</code></em> <sup>3</sup></p>
+</li>
+<li>
+<p>可以通过如下方式自定义keys</p>
+<p><code>scala
+lazy val customKey = settingKey[String]("The custom key")</code></p>
+</li>
+</ul>
+<h3 id="adding-project-description">Adding project description</h3>
+<pre><code class="language-scala">name := &quot;scala-demo-project&quot;
+organization := &quot;com.shuailli.demo&quot;
+version := &quot;0.1.0-SNAPSHOT&quot;
+scalaVersion := &quot;2.13.5&quot;
+</code></pre>
+<h3 id="adding-library-dependencies">Adding library dependencies</h3>
+<pre><code class="language-scala">// define libs version
+val http4sVersion = &quot;0.21.29&quot;
+val specs2Version = &quot;4.11.0&quot;
+</code></pre>
+<pre><code class="language-scala">libraryDependencies ++= Seq(
+  &quot;org.http4s&quot; %% &quot;http4s-dsl&quot; % http4sVersion,
+  &quot;org.http4s&quot; %% &quot;http4s-blaze-client&quot; % http4sVersion,
+  &quot;org.http4s&quot; %% &quot;http4s-circe&quot; % http4sVersion,
+  &quot;org.specs2&quot; %% &quot;specs2-core&quot; % specs2Version % &quot;test&quot;,
+)
+</code></pre>
+<p>Tips</p>
+<ul>
+<li>
+<p>Scala主次版本的特性差异较大，因此很多lib都会被编译给多个Scala版本 <a href="https://mvnrepository.com/artifact/org.http4s/http4s-core">可见示例</a></p>
+</li>
+<li>
+<p>通过 %% 方法获取相应Scala版本的lib，确保lib对项目是二进制兼容的 </p>
+</li>
+</ul>
+<p>如果你用的是 groupID %% artifactID % revision 而不是 groupID % artifactID % revision（区别在于 groupID 后面是 %%），sbt 会在 lib名称中加上项目的 Scala 版本号。 这只是一种快捷方法。你可以这样写不用 %%:</p>
+<pre><code class="language-scala">libraryDependencies += &quot;org.scala-tools&quot; % &quot;scala-stm_2.11&quot; % &quot;0.3&quot;
+</code></pre>
+<p>假设这个构建的 scalaVersion 是 2.11.1，下面这种方式是等效的（注意 "org.scala-tools" 后面是 %%）:</p>
+<pre><code class="language-scala">libraryDependencies += &quot;org.scala-tools&quot; %% &quot;scala-stm&quot; % &quot;0.3&quot;
+</code></pre>
+<h3 id="compiler-options">Compiler Options</h3>
+<pre><code class="language-scala">scalacOptions ++= Seq(
+  &quot;-encoding&quot;, &quot;utf8&quot;, // Option and arguments on same line
+  &quot;-Xfatal-warnings&quot;,  // New lines for each options
+  &quot;-deprecation&quot;,
+  &quot;-unchecked&quot;,
+  &quot;-language:implicitConversions&quot;,
+  &quot;-language:higherKinds&quot;,
+  &quot;-language:existentials&quot;,
+  &quot;-language:postfixOps&quot;
+)
+</code></pre>
+<ul>
+<li>
+<p>官方完整的compiler options可见: <a href="https://docs.scala-lang.org/overviews/compiler-options/index.html">链接</a></p>
+</li>
+<li>
+<p>一份推荐的compiler options配置可见: <a href="https://tpolecat.github.io/2017/04/25/scalac-flags.html">链接</a></p>
+</li>
+</ul>
+<h3 id="command-alias">Command Alias</h3>
+<pre><code class="language-scala">addCommandAlias(&quot;checkAndTest&quot;, &quot;;clean;scalafmtCheck;coverage;test;coverageReport;coverageOff&quot;)
+</code></pre>
+<h3 id="adding-plugins">Adding plugins</h3>
+<pre><code class="language-scala">// define lib version
+val kindProjectorVersion = &quot;0.13.0&quot;
+
+addCompilerPlugin(&quot;org.typelevel&quot; %% &quot;kind-projector&quot; % kindProjectorVersion cross CrossVersion.full)
+</code></pre>
+<h2 id="build-support-files">Build Support Files</h2>
+<p>目录 <em><code>project</code></em> 下任何的文件都可以被用在构建过程中.</p>
+<h3 id="specifying-the-sbt-version">Specifying the sbt version</h3>
+<ul>
+<li>使用 <em><code>project/build.properties</code></em> 文件指定 <em><code>sbt</code></em> 版本</li>
+</ul>
+<pre><code class="language-properties">sbt.version = 1.4.7
+</code></pre>
+<ul>
+<li>如果指定的 <em><code>sbt</code></em> 版本在本地不存在, <em><code>sbt launcher</code></em> 将会在构建开始前自动为你下载.</li>
+<li>这个特性会保证本地预装了不同版本 <em><code>sbt</code></em> 的开发者对同一项目的构建生成一致的构建产物, 因为它将最终使用指定版本的sbt</li>
+</ul>
+<h3 id="organize-plugins">Organize plugins</h3>
+<ul>
+<li>使用 <em><code>project/plugins.sbt</code></em> 文件管理 <em><code>sbt</code></em> 插件</li>
+</ul>
+<pre><code class="language-scala">addSbtPlugin(&quot;com.typesafe.sbt&quot; % &quot;sbt-native-packager&quot; % &quot;1.8.0&quot;)
+addSbtPlugin(&quot;org.scoverage&quot; % &quot;sbt-scoverage&quot; % &quot;1.6.1&quot;)
+addSbtPlugin(&quot;org.scalameta&quot; % &quot;sbt-scalafmt&quot; % &quot;2.4.2&quot;)
+</code></pre>
+<h2 id="how-to-run-sbt">How to run sbt?</h2>
+<h3 id="installation">Installation</h3>
+<ul>
+<li>
+<p>安装 <em><code>JDK</code></em> （推荐安装JDK8或者JDK11）</p>
+</li>
+<li>
+<p>安装 <em><code>sbt</code></em></p>
+</li>
+</ul>
+<pre><code class="language-shell">// In MacOS 
+$ brew install sbt
+</code></pre>
+<ul>
+<li>
+<p>现在你可以开始Scala项目的开发</p>
+</li>
+<li>
+<p>Tips:</p>
+</li>
+<li>
+<p>Scala不同于其他语言，Scala主次版本之间的特性差异较大，因此通常都是为每个项目安装特定版本(<em><code>build.sbt</code></em>)的Scala,而不是全局安装，_<code>sbt</code>_就可以用来管理每个Scala项目特定的Scala版本.</p>
+</li>
+<li>
+<p>安装 <em><code>sbt</code></em> 后，默认情况下, <em><code>sbt</code></em> 会使用和自身版本相应版本的Scala来构建项目</p>
+</li>
+</ul>
+<h3 id="sbt-shell-and-common-commands">sbt Shell and common commands</h3>
+<ul>
+<li>进入 <em><code>sbt</code></em> 交互模式</li>
+</ul>
+<pre><code class="language-shell">$ sbt
+</code></pre>
+<ul>
+<li>常用命令:</li>
+</ul>
+<pre><code class="language-shell">&gt; new
+&gt; clean
+&gt; compile
+&gt; test
+&gt; testOnly
+&gt; package
+&gt; console
+&gt; run
+</code></pre>
+<h3 id="batch-mode">Batch mode</h3>
+<p>你也可以用批处理模式来运行 sbt，可以以空格为分隔符指定参数。对于接受参数的 <em><code>sbt</code></em> 命令，将命令和参数用引号引起来一起传给 <em><code>sbt</code></em>。例如：</p>
+<pre><code class="language-shell">$ sbt clean compile &quot;testOnly TestA TestB&quot;
+</code></pre>
+<p>在这个例子中，testOnly 有两个参数 TestA 和 TestB。这个命令会按顺序执行（clean， compile， 然后 testOnly）.</p>
+<p>批处理模式下，构建将运行的非常慢.</p>
+<h3 id="continuous-build-and-test">Continuous Build and Test</h3>
+<p>为了加快编辑-编译-测试循环，你可以让 sbt 在你保存源文件时自动重新编译或者跑测试。 在命令前面加上前缀 <em><code>~</code></em> 后，每当有一个或多个源文件发生变化时就会自动运行该命令. </p>
+<ul>
+<li>交互模式下尝试</li>
+</ul>
+<pre><code class="language-shell">&gt; ~ compile
+</code></pre>
+<pre><code class="language-shell">&gt; ~ run
+</code></pre>
+<pre><code class="language-shell">&gt; ~ testQuick
+</code></pre>
+<p>交互模式下按<code>回车键</code>停止监视变化，当然了交互模式或者批处理模式下均可使用 <em><code>~</code></em> 前缀.</p>
+<ul>
+<li>批处理模式下尝试</li>
+</ul>
+<pre><code class="language-shell">$ sbt '~ run'
+</code></pre>
+<p>为了区分类Unix系统下和 <em><code>sbt</code></em> 下的 <em><code>~</code></em> 前缀(Unix系统下代表当前用户根目录)，在批处理模式下需要使用 <em><code>'</code></em> 将sbt的命令包起来</p>
+<h2 id="common-plugins">Common plugins</h2>
+<h3 id="formatter">Formatter</h3>
+<ul>
+<li>在 <em><code>project/plugins.sbt</code></em> 文件添加插件</li>
+</ul>
+<pre><code class="language-scala">addSbtPlugin(&quot;org.scalameta&quot; % &quot;sbt-scalafmt&quot; % &quot;2.4.2&quot;)
+</code></pre>
+<ul>
+<li>项目根目录下添加配置文件 <em><code>.scalafmt.conf</code></em> </li>
+<li>示例一个最简单的配置, 官方配置说明请见: <a href="https://scalameta.org/scalafmt/docs/configuration.html">链接</a></li>
+</ul>
+<pre><code class="language-conf">version = 2.7.5
+
+maxColumn = 180
+
+align = more
+danglingParentheses = false
+continuationIndent.defnSite = 2
+</code></pre>
+<ul>
+<li>指定如下命令执行formatter</li>
+</ul>
+<pre><code class="language-shell">$ sbt scalafmt
+// or
+$ sbt scalafmtCheck
+</code></pre>
+<h3 id="package-release">Package &amp; Release</h3>
+<ul>
+<li>在 <em><code>project/plugins.sbt</code></em> 文件添加打包插件（产出胖JAR包-一个包含代码和库中所有类文件的JAR文件）</li>
+</ul>
+<pre><code class="language-scala">addSbtPlugin(&quot;com.eed3si9n&quot; % &quot;sbt-assembly&quot; % &quot;1.0.0&quot;)
+</code></pre>
+<ul>
+<li>执行如下命令生成 JAR 包</li>
+</ul>
+<pre><code class="language-shell">$ sbt package
+</code></pre>
+<ul>
+<li>在 <em><code>project/plugins.sbt</code></em> 文件添加打包插件（产出部署镜像）</li>
+</ul>
+<pre><code class="language-scala">addSbtPlugin(&quot;com.typesafe.sbt&quot; % &quot;sbt-native-packager&quot; % &quot;1.7.5&quot;)
+</code></pre>
+<ul>
+<li>执行如下命令为不同系统构建部署镜像</li>
+</ul>
+<pre><code class="language-shell">$ sbt debian:packageBin   # deb package
+$ sbt windows:packageBin  # msi package
+$ sbt docker:publishLocal # docker image
+</code></pre>
+<h3 id="test-coverage">Test &amp; Coverage</h3>
+<ul>
+<li>在 <em><code>project/plugins.sbt</code></em> 文件添加插件</li>
+</ul>
+<pre><code class="language-scala">addSbtPlugin(&quot;org.scoverage&quot; % &quot;sbt-scoverage&quot; % &quot;1.6.1&quot;)
+</code></pre>
+<ul>
+<li>在 <em><code>build.sbt</code></em> 文件添加测试覆盖率配置</li>
+</ul>
+<pre><code class="language-scala">coverageEnabled in Test := true
+coverageMinimum := 90
+coverageFailOnMinimum := true
+coverageExcludedPackages := coverageExcludedClasses.mkString(&quot;;&quot;)
+</code></pre>
+<ul>
+<li>执行如下命令均可调用覆盖率检查</li>
+</ul>
+<pre><code class="language-shell">$ sbt coverage
+// or 
+$ sbt test
+// or
+$ sbt coverageReport
+</code></pre>
+<h2 id="scopes">Scopes</h2>
+<p>之前提到了 <em><code>key</code></em> , 实际上可以在不同的上下文中为同一个 <em><code>key</code></em> 赋予不同的值，每个上下文称之为 <em><code>scope</code></em></p>
+<p>例如：如果在你的构建定义中有多个项目，在每个项目中的 <em><code>version</code></em> 可以是不同的值.</p>
+<h3 id="there-are-three-scope-axes">There are three scope axes</h3>
+<p>Scope 轴是一种类型，该类型的每个实例都能定义自己的 scope（也就是说，每个实例的key可以有自己特定的值）.</p>
+<ul>
+<li>Projects</li>
+<li>Configurations</li>
+<li>Tasks</li>
+</ul>
+<h3 id="scoping-by-project-axis">Scoping by Project axis</h3>
+<p>如果你将多个项目放在同一个构建中，每个项目需要有属于自己的 <em><code>settings</code></em>。也就是说，<em><code>keys</code></em> 可以根据项目被局限在不同的上下文中.</p>
+<p>当一个项目没有定义项目层级的 <em><code>settings</code></em> 的时候，构建层级的 <em><code>settings</code></em> 通常作为默认的设置.</p>
+<ul>
+<li>如下示例，利用 project 轴设置构建层级的 <em><code>settings</code></em></li>
+</ul>
+<pre><code class="language-scala">ThisBuild / scalaVersion     := &quot;2.13.5&quot;
+ThisBuild / version          := &quot;0.1.0-SNAPSHOT&quot;
+ThisBuild / organization     := &quot;com.shuailli.demo&quot;
+</code></pre>
+<p><em><code>ThisBuild</code></em> 代表的就是<code>构建层级</code></p>
+<h3 id="scoping-by-configuration-axis">Scoping by Configuration axis</h3>
+<p>一个 configuration 定义一种特定的构建，可能包含它自己的 classpath，源文件和生成的包等.</p>
+<p>在 sbt 中你可以看到这些 configurations：</p>
+<ul>
+<li><em><strong><code>Compile</code></strong></em> 定义主构建 (src/main/scala).</li>
+<li><em><strong><code>Test</code></strong></em> 定义如何构建测试 (src/test/scala).</li>
+<li><em><strong><code>Runtime</code></strong></em> 为 <em><code>run task</code></em> 定义 <em><code>classpath</code></em>.</li>
+<li><em><strong><code>Provide</code></strong></em> 为 <em><code>compiling task</code></em> 和 <em><code>test task</code></em> 定义 <em><code>classpath</code></em>.</li>
+</ul>
+<p>默认情况下，和编译、打包、运行相关的所有 <em><code>key</code></em> 都局限于一个 <em><code>configuration</code></em>，因此在不同的 <em><code>configuration</code></em> 中可能产生不同的效果。最明显的例子就是 task key：compile，package 和 run； 然而能够 影响 到这些 <em><code>key</code></em> 的所有其他 <em><code>key</code></em>（例如 sourceDirectories，scalacOptions 和 fullClasspath）也都局限于该 <em><code>configuration</code></em>.</p>
+<h3 id="scoping-by-task-axis">Scoping by Task axis</h3>
+<p><em><code>Settings</code></em> 可以影响一个 task 如何工作.</p>
+<p>为了支持这种特性，一个 <em><code>task key</code></em>（例如 <em><code>packageSrc</code></em>）可以作为另一个 <em><code>key</code></em>（例如 <em><code>packageOptions</code></em>）的 scope.</p>
+<p>一些和打包相关的 <em><code>task</code></em>（<em><code>packageSrc</code></em>, <em><code>packageBin</code></em>, <em><code>packageDoc</code></em>）可以共享和打包相关的 <em><code>key</code></em>，例如 <em><code>artifactName</code></em> 和 <em><code>packageOptions</code></em>。这些 <em><code>key</code></em> 对于每个打包的 <em><code>task</code></em> 可以有唯一的值。</p>
+<pre><code class="language-scala">packageSrc / packageOptions := ???
+</code></pre>
+<pre><code class="language-scala">packageBin / packageOptions := ???
+</code></pre>
+<pre><code class="language-scala">packageDoc / packageOptions := ???
+</code></pre>
+<h2 id="referrences">Referrences</h2>
+<ul>
+<li>[1] sbt Faq, <a href="https://www.scala-sbt.org/release/docs/Faq.html">https://www.scala-sbt.org/release/docs/Faq.html</a></li>
+<li>[2] 2019 Scala Developer Survey, <a href="https://scalacenter.github.io/scala-developer-survey-2019/#what-are-the-*other*-pain-points-to-get-started-in-scala">https://scalacenter.github.io/scala-developer-survey-2019/#what-are-the-*other*-pain-points-to-get-started-in-scala</a></li>
+<li>[3] sbt Keys, <a href="https://www.scala-sbt.org/1.x/api/sbt/Keys$.html">https://www.scala-sbt.org/1.x/api/sbt/Keys$.html</a></li>
+</ul>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../.." class="md-footer__link md-footer__link--prev" aria-label="Previous: Introduction" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Introduction
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../basics/know-scala/" class="md-footer__link md-footer__link--next" aria-label="Next: Know Scala" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Know Scala
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.bd0b6b67.min.js"}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.467223ff.min.js"></script>
+      
+    
+  </body>
+</html>

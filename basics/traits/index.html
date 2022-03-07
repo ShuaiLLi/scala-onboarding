@@ -1,0 +1,855 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../assets/scala-favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.2.5">
+    
+    
+      
+        <title>Trait - Scala Onboarding</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2d9f7617.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Museo+Sans:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Museo Sans";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#traits" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Scala Onboarding" class="md-header__button md-logo" aria-label="Scala Onboarding" data-md-component="logo">
+      
+  <img src="../../assets/scala-favicon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Scala Onboarding
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Trait
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Scala Onboarding" class="md-nav__button md-logo" aria-label="Scala Onboarding" data-md-component="logo">
+      
+  <img src="../../assets/scala-favicon.png" alt="logo">
+
+    </a>
+    Scala Onboarding
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Build Tool
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Build Tool" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Build Tool
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../build-tool/sbt/" class="md-nav__link">
+        sbt
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Basics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Basics" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Basics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../know-scala/" class="md-nav__link">
+        Know Scala
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          Type System
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Type System" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Type System
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../build-in-data-types/" class="md-nav__link">
+        Build-in Data Types
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../variables/" class="md-nav__link">
+        Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../classes/" class="md-nav__link">
+        Class
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Trait
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Trait
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#using-scala-traits-as-interfaces" class="md-nav__link">
+    Using Scala Traits as Interfaces
+  </a>
+  
+    <nav class="md-nav" aria-label="Using Scala Traits as Interfaces">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-simple-example" class="md-nav__link">
+    A simple example
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extending-traits" class="md-nav__link">
+    Extending traits
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-scala-traits-like-abstract-classes" class="md-nav__link">
+    Using Scala Traits like Abstract Classes
+  </a>
+  
+    <nav class="md-nav" aria-label="Using Scala Traits like Abstract Classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-first-example" class="md-nav__link">
+    A first example
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mixing-traits-in-on-the-fly" class="md-nav__link">
+    Mixing traits in on the fly
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abstract-classes" class="md-nav__link">
+    Abstract Classes
+  </a>
+  
+    <nav class="md-nav" aria-label="Abstract Classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scala-traits-dont-allow-constructor-parameters" class="md-nav__link">
+    Scala traits don’t allow constructor parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-scala-code-will-be-called-from-java-code" class="md-nav__link">
+    When Scala code will be called from Java code
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../companion-object/" class="md-nav__link">
+        Companion Object
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case-classes-and-case-objects/" class="md-nav__link">
+        Case Classes And Case Objects
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../control-structures/" class="md-nav__link">
+        Control Structures
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#using-scala-traits-as-interfaces" class="md-nav__link">
+    Using Scala Traits as Interfaces
+  </a>
+  
+    <nav class="md-nav" aria-label="Using Scala Traits as Interfaces">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-simple-example" class="md-nav__link">
+    A simple example
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extending-traits" class="md-nav__link">
+    Extending traits
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-scala-traits-like-abstract-classes" class="md-nav__link">
+    Using Scala Traits like Abstract Classes
+  </a>
+  
+    <nav class="md-nav" aria-label="Using Scala Traits like Abstract Classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-first-example" class="md-nav__link">
+    A first example
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mixing-traits-in-on-the-fly" class="md-nav__link">
+    Mixing traits in on the fly
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abstract-classes" class="md-nav__link">
+    Abstract Classes
+  </a>
+  
+    <nav class="md-nav" aria-label="Abstract Classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scala-traits-dont-allow-constructor-parameters" class="md-nav__link">
+    Scala traits don’t allow constructor parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-scala-code-will-be-called-from-java-code" class="md-nav__link">
+    When Scala code will be called from Java code
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="traits">Traits</h1>
+<p>trait是Scala中除了class外的另一个面向对象编程特性，你可以像Java中的interface那样使用trait，仅仅把它当做一个接口; 同时，你也可以像Java中的抽象类(abstract class)那样使用trait, 在trait中定义完整的方法，而不仅仅只是声明方法. Scala的class也能继承一个或者多个trait.</p>
+<h2 id="using-scala-traits-as-interfaces">Using Scala Traits as Interfaces</h2>
+<p>当我们将<code>trait</code>当做接口时，我们可以在<code>trait</code>里仅仅定义一些功能的接口，而并不为这些功能实现任何的行为.</p>
+<h3 id="a-simple-example">A simple example</h3>
+<p>我们从一个简单的例子开始，想象一下你想要写一些代码为动物构建模型, 比如猫、狗, 我们可以先提取一些动物的通用特性, 比如动物都会叫，动物都会跑, 但是叫的声音不一样，跑的方式也不一样, 因此我们可以将叫和跑抽象成两个trait, 示例代码如下:</p>
+<pre><code class="language-scala">trait Speaker {
+    def speak(): String
+}
+
+trait Runner {
+    def run(): Unit
+}
+</code></pre>
+<h3 id="extending-traits">Extending traits</h3>
+<p>上一节中的<code>Speaker</code>和<code>Runner</code>中仅仅是声明了功能，接下来我们将通过具体某一种动物来实现这些trait中定义的功能, 示例代码如下:</p>
+<pre><code class="language-scala">class Dog extends Speaker with Runner {
+  override def speak() = &quot;dog Woof!&quot;
+
+  override def run(): Unit = println(&quot;dog Run！&quot;)
+}
+</code></pre>
+<p>如上代码所示就是Scala中<code>class</code>继承<code>trait</code>的方式了, 当需要继承多个trait时，使用<code>extends</code>关键字去继承第一个trait, 使用<code>with</code>关键字去继承其他的<code>trait</code>, 注意每继承一个新的<code>trait</code>都需要单独使用一个<code>with</code>关键字, 示例如下:</p>
+<pre><code class="language-scala">class Dog extends Speaker with Runner with OtherTrait {
+
+}
+</code></pre>
+<p>如果class只需要继承一个<code>trait</code>, 那么直接使用<code>extends</code>关键字即可.</p>
+<p>Tip:</p>
+<ul>
+<li>继承<code>trait</code>的子类需要实现<code>trait</code>中所有已声明的方法</li>
+</ul>
+<h2 id="using-scala-traits-like-abstract-classes">Using Scala Traits like Abstract Classes</h2>
+<p>当我们像抽象类一样使用<code>trait</code>时, 我们即可以在<code>trait</code>中声明只包含签名的方法(没有方法体)，也可以声明带方法体的方法.</p>
+<h3 id="a-first-example">A first example</h3>
+<p>上一节我们提到了猫、狗都属于动物，细分下来其实猫、狗可以划分为宠物, 我们可以将宠物的特性提取出来，抽象成一个trait，示例代码如下:</p>
+<pre><code class="language-scala">trait Pet {
+  def eat() = &quot;eat&quot;
+
+  def comeToMaster(): Unit
+}
+</code></pre>
+<p>接下里我们使用<code>Pet</code>这个trait来丰富狗的模型, 示例代码如下:</p>
+<pre><code class="language-scala">class Dog(name: String) extends Speaker with Runner with Pet {
+  override def speak() = &quot;dog Woof!&quot;
+
+  override def run(): Unit = println(&quot;dog run&quot;)
+
+  override def comeToMaster(): Unit = println(s&quot;Woo-hoo, $name is coming!&quot;)
+}
+</code></pre>
+<h3 id="mixing-traits-in-on-the-fly">Mixing traits in on the fly</h3>
+<p>Scala有一个有趣的特性，你可以动态的混合多个有实现方法的<code>trait</code>， 示例代码如下:</p>
+<pre><code class="language-scala">trait Speaker {
+    def speak() = &quot;speak&quot;
+}
+
+
+trait Runner {
+    def run(): Unit = println(&quot;I'm running~&quot;)
+}
+
+
+class Cat(name: String)
+
+
+val cat= new Cat(&quot;Tom&quot;) with Speaker with Runner
+</code></pre>
+<p>代码中的<code>cat</code>对象拥有<code>speak</code>和<code>run</code>方法.</p>
+<p>注意当<code>Speaker</code>包含一个没有实现的方法时, 将无法通过上述的方式创建<code>cat</code>对象, 因为我们必须实现所有的方法, 示例代码如下:</p>
+<pre><code class="language-scala">trait Speaker {
+    def speak() = &quot;speak&quot;
+
+    def wait(): Unit
+}
+
+
+trait Runner {
+    def run(): Unit = println(&quot;I'm running~&quot;)
+}
+
+
+class Cat(name: String)
+
+
+val cat= new Cat(&quot;Tom&quot;) with Speaker with Runner {
+    override def wait(): Unit = println(&quot;Waiting 1 mins~&quot;)
+  }
+</code></pre>
+<h2 id="abstract-classes">Abstract Classes</h2>
+<p>Scala中也有抽象类的概念, 它与Java中的抽象类类似. 但因为<code>trait</code> 是如此的强大, 我们很少会使用抽象类. 实际上, 只有在如下场景下我们才会使用<code>trait</code>:</p>
+<ul>
+<li>
+<p>创建一个有构造参数的基础类</p>
+</li>
+<li>
+<p>你的代码需要被Java代码调用</p>
+</li>
+</ul>
+<h3 id="scala-traits-dont-allow-constructor-parameters">Scala traits don’t allow constructor parameters</h3>
+<p>Scala的<code>trait</code>是不允许定义构造参数的, 如下代码将无法进行编译:</p>
+<pre><code class="language-scala">// this won’t compile
+trait Animal(name: String)
+</code></pre>
+<p>如果你想要创建一个带有构造参数的基础类, 只能使用抽象类, 代码示例如下:</p>
+<pre><code class="language-scala">abstract class Animal(name: String)
+</code></pre>
+<p>Tip:</p>
+<ul>
+<li>一个类只能继承一个抽象类</li>
+</ul>
+<h3 id="when-scala-code-will-be-called-from-java-code">When Scala code will be called from Java code</h3>
+<p>Java根本不认识Scala的<code>trait</code>, 因此如果你想在Java代码中调用Scala的代码, 那你只能使用抽象类而不是<code>trait</code>, 示例代码如下:</p>
+<pre><code class="language-scala">abstract class Pet(name: String) {
+  def speak(): Unit = println(&quot;Yo&quot;) // concrete implementation
+
+  def comeToMaster(): Unit // abstract method
+}
+
+
+class Dog(dogName: String) extends Pet(dogName) {
+  override def speak(): Unit = println(s&quot;$dogName Woof&quot;)
+
+  def comeToMaster(): Unit = println(s&quot;Here I come!&quot;)
+}
+
+val dog = new Dog(&quot;Tom&quot;)
+dog.speak()           // Tom Woof
+</code></pre>
+<p>注意<code>Dog</code>的参数是如何传入到<code>Pet</code>的.</p>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../classes/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Class" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Class
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../companion-object/" class="md-footer__link md-footer__link--next" aria-label="Next: Companion Object" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Companion Object
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.bd0b6b67.min.js"}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.467223ff.min.js"></script>
+      
+    
+  </body>
+</html>

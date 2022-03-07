@@ -1,0 +1,909 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../assets/scala-favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.2.5">
+    
+    
+      
+        <title>Build-in Data Types - Scala Onboarding</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2d9f7617.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Museo+Sans:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Museo Sans";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#build-in-data-types" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Scala Onboarding" class="md-header__button md-logo" aria-label="Scala Onboarding" data-md-component="logo">
+      
+  <img src="../../assets/scala-favicon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Scala Onboarding
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Build-in Data Types
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Scala Onboarding" class="md-nav__button md-logo" aria-label="Scala Onboarding" data-md-component="logo">
+      
+  <img src="../../assets/scala-favicon.png" alt="logo">
+
+    </a>
+    Scala Onboarding
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Build Tool
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Build Tool" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Build Tool
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../build-tool/sbt/" class="md-nav__link">
+        sbt
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Basics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Basics" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Basics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../know-scala/" class="md-nav__link">
+        Know Scala
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          Type System
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Type System" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Type System
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Build-in Data Types
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Build-in Data Types
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#data-type-system-diagram" class="md-nav__link">
+    Data type system diagram
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-few-build-in-data-types" class="md-nav__link">
+    A few build-in Data Types
+  </a>
+  
+    <nav class="md-nav" aria-label="A few build-in Data Types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#string-topic" class="md-nav__link">
+    String Topic
+  </a>
+  
+    <nav class="md-nav" aria-label="String Topic">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    使用 + 操作符拼接多个字符串
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#s" class="md-nav__link">
+    使用 s 对字符串插值处理
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#f" class="md-nav__link">
+    使用 f 对字符串插值处理
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    多行字符串处理
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bigint-and-bigdecimal-topic" class="md-nav__link">
+    BigInt and BigDecimal Topic
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referrences" class="md-nav__link">
+    Referrences
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../variables/" class="md-nav__link">
+        Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../classes/" class="md-nav__link">
+        Class
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../traits/" class="md-nav__link">
+        Trait
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../companion-object/" class="md-nav__link">
+        Companion Object
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case-classes-and-case-objects/" class="md-nav__link">
+        Case Classes And Case Objects
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../control-structures/" class="md-nav__link">
+        Control Structures
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#data-type-system-diagram" class="md-nav__link">
+    Data type system diagram
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-few-build-in-data-types" class="md-nav__link">
+    A few build-in Data Types
+  </a>
+  
+    <nav class="md-nav" aria-label="A few build-in Data Types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#string-topic" class="md-nav__link">
+    String Topic
+  </a>
+  
+    <nav class="md-nav" aria-label="String Topic">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    使用 + 操作符拼接多个字符串
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#s" class="md-nav__link">
+    使用 s 对字符串插值处理
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#f" class="md-nav__link">
+    使用 f 对字符串插值处理
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    多行字符串处理
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bigint-and-bigdecimal-topic" class="md-nav__link">
+    BigInt and BigDecimal Topic
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referrences" class="md-nav__link">
+    Referrences
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="build-in-data-types">Build-in Data Types</h1>
+<h2 id="data-type-system-diagram">Data type system diagram</h2>
+<p><img alt="avatar" src="../../assets/data-type-system-diagram.png" /></p>
+<p>有几个类型需要特别说明下，如下表:</p>
+<table>
+<thead>
+<tr>
+<th>Data Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Unit</td>
+<td>表示无值，和Java中的void有着一样的作用。用作不返回任何结果的方法的结果类型。Unit只有一个实例值，写成()</td>
+</tr>
+<tr>
+<td>Null</td>
+<td>null 或空引用</td>
+</tr>
+<tr>
+<td>Nothing</td>
+<td>Nothing类型在Scala的类层级的最底端；它是任何其他类型的子类型</td>
+</tr>
+<tr>
+<td>Any</td>
+<td>Any是所有其他类的超类</td>
+</tr>
+<tr>
+<td>AnyVal</td>
+<td>AnyRef类是Scala里所有数字类型的基类</td>
+</tr>
+<tr>
+<td>AnyRef</td>
+<td>AnyRef类是Scala里所有引用类的基类</td>
+</tr>
+</tbody>
+</table>
+<h2 id="a-few-build-in-data-types">A few build-in Data Types</h2>
+<p><code>Scala</code> 内置了很多基础数据类型供开发者使用，所有的这些数据类型都被封装成成熟的<code>object</code>，并非原始数据类型(int, float等)</p>
+<p>如下为定义这些基础数据类型的示例:</p>
+<pre><code class="language-scala">val b: Byte = 1
+val i: Int = 1
+val l: Long = 1
+val s: Short = 1
+</code></pre>
+<p>上述 <code>Byte</code>, <code>Int</code>, <code>Long</code>, <code>Short</code>四个数据类型均为 <strong>整数型</strong> ，整数型默认的数据类型为 <code>Int</code>, 如果你想将整数型变量设置为其他整数型数据类型，你将需要使用类似如上的 <strong>显式声明数据类型</strong>，也即在变量名后边跟上 "<code>: {数据类型}</code>".</p>
+<p>小数型变量默认的数据类型为 <code>Double</code>, 同样地如果你想将小数型变量设置为其他小数型数据类型，也需要 <strong>显式声明数据类型</strong>, 如下为内置小数型数据类型示例:</p>
+<pre><code class="language-scala">val d = 2.0          // default &quot;Double&quot; type
+
+val f: Float = 3.0   // set to `Float` type
+</code></pre>
+<p>当然了 <code>Scala</code> 也内置了 <code>Boolean</code>, <code>String</code>, <code>Char</code> 三种基本数据类型, 示例如下:</p>
+<pre><code class="language-scala">val b = true         // default &quot;Boolean&quot; type
+
+val s = &quot;hello&quot;      // default &quot;String&quot; type
+
+val c = 'a'          // default &quot;Char&quot; type
+</code></pre>
+<p>Tip</p>
+<p>如下附上 <code>Scala</code> 官方对 <code>9</code> 种基本数据类型 <strong>值范围</strong> 的说明:</p>
+<table>
+<thead>
+<tr>
+<th>Data Type</th>
+<th>Possible Values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Boolean</td>
+<td>true or false</td>
+</tr>
+<tr>
+<td>Byte</td>
+<td>8-bit signed two’s complement integer (-2^7 to 2^7-1, inclusive)</td>
+</tr>
+<tr>
+<td>Short</td>
+<td>16-bit signed two’s complement integer (-2^15 to 2^15-1, inclusive)</td>
+</tr>
+<tr>
+<td>Int</td>
+<td>32-bit two’s complement integer (-2^31 to 2^31-1, inclusive)</td>
+</tr>
+<tr>
+<td>Long</td>
+<td>64-bit two’s complement integer (-2^63 to 2^63-1, inclusive)</td>
+</tr>
+<tr>
+<td>Float</td>
+<td>32-bit IEEE 754 single-precision float (1.40129846432481707e-45 to 3.40282346638528860e+38)</td>
+</tr>
+<tr>
+<td>Double</td>
+<td>64-bit IEEE 754 double-precision float (4.94065645841246544e-324d to 1.79769313486231570e+308d)</td>
+</tr>
+<tr>
+<td>Char</td>
+<td>16-bit unsigned Unicode character (0 to 2^16-1, inclusive)</td>
+</tr>
+<tr>
+<td>String</td>
+<td>a sequence of Char</td>
+</tr>
+</tbody>
+</table>
+<h3 id="string-topic"><code>String</code> Topic</h3>
+<p><code>Scala</code>的字符串有很多不错的特性，接下来我们主要讨论几种常见的字符串拼接方法:</p>
+<p>首先声明两个字符串变量</p>
+<pre><code class="language-scala">val firstName = &quot;Shuai&quot;
+val lastName = &quot;Li&quot;
+</code></pre>
+<h4 id="_1">使用 <code>+</code> 操作符拼接多个字符串</h4>
+<pre><code class="language-scala">val name = firstName + &quot; &quot; + lastName  // Shuai Li
+</code></pre>
+<h4 id="s">使用 <code>s</code> 对字符串插值处理</h4>
+<pre><code class="language-scala">val name = s&quot;$firstName $lastName&quot;  // Shuai Li
+</code></pre>
+<p><code>s</code> 字符串插值也支持你将变量用 <strong>花括号</strong> 括起来</p>
+<pre><code class="language-scala">val name = s&quot;${firstName} ${lastName}&quot;  // Shuai Li
+</code></pre>
+<p>难道 <strong>花括号</strong> 就这？不止，花括号内支持是支持表达式的</p>
+<pre><code class="language-scala">val calculation_description = s&quot;1 + 1 = ${1 + 1}&quot;  // 1 + 1 = 2
+</code></pre>
+<p>对于一些特殊字符，使用 <code>s</code> 插值器时需要注意对这些字符进行 <strong>转义</strong></p>
+<pre><code class="language-scala">println(s&quot;The book is $$30.54&quot;)  // The book is $30.54
+</code></pre>
+<p><code>双引号</code>也是需要进行 <strong>转义</strong> 的，如下包含正确和错误两个示例:</p>
+<pre><code class="language-scala">println(s&quot;The focus of this book is on \&quot;clean code\&quot;.&quot;)  // compile error
+
+println(&quot;&quot;&quot;The focus of this book is on &quot;clean code&quot;.&quot;&quot;&quot;)  // The focus of this book is on &quot;clean code&quot;.
+</code></pre>
+<p>也就是说，<code>双引号</code> 的转义需要通过 <code>三重双引号</code> 完成</p>
+<h4 id="f">使用 <code>f</code> 对字符串插值处理</h4>
+<p><code>f</code> 字符串插值允许创建简单的格式化字符串，类似于其他语言的 <code>printf</code>。使用 <code>f</code> 插值时，所有变量引用都应该在变量尾部追加一个格式化符号（如 %d），请看如下示例:</p>
+<pre><code class="language-scala">val money = 7.856
+println(f&quot;$name%s has $money%2.2f yuan left&quot;)  // Shuai Li has 7.86 yuan left
+</code></pre>
+<h4 id="_2">多行字符串处理</h4>
+<p>在 <code>Scala</code> 中我们可以使用三个双引号包裹字符串来达到创建多行字符串的目的, 示例代码如下:</p>
+<pre><code class="language-scala">val introduction =
+  &quot;&quot;&quot;My name
+      is Shuai Li...&quot;&quot;&quot;
+println(introduction)
+</code></pre>
+<p>我们可以得到如下的输出结果:</p>
+<pre><code class="language-scala">My name
+       is Shuai Li...
+</code></pre>
+<p>但是如大家所见，这种方法有一个明显的缺陷就是: <code>除了第一行外的所有行都是带缩进效果的</code>，为了解决这个问题我们可以将 <code>|</code> 符号加到首行外所有行的行首，并在字符串后调用 <code>stripMargin</code>(去除边缘空白) 方法, 代码示例如下:</p>
+<pre><code class="language-scala">val introduction =
+  &quot;&quot;&quot;My name
+    |is Shuai Li...&quot;&quot;&quot;.stripMargin
+println(introduction)
+</code></pre>
+<p>我们可以得到如下的输出结果:</p>
+<pre><code class="language-scala">My name
+is Shuai Li...
+</code></pre>
+<h3 id="bigint-and-bigdecimal-topic"><code>BigInt and BigDecimal</code> Topic</h3>
+<p>针对大数处理场景，<code>Scala</code> 提供了两种数据类型:</p>
+<ul>
+<li>
+<p><code>BigInt</code> 大整数</p>
+</li>
+<li>
+<p><code>BigDecimal</code> 大十进制数(小数)</p>
+</li>
+</ul>
+<p>不同于其在Java中对应的类，<code>Scala</code> 中这两种大数数据类型支持所有你习惯使用的数字类型的操作符，一个字: <strong>妙</strong>, 让我们看几个<code>REPL</code><sup>[1]</sup>环境下的示例:</p>
+<pre><code class="language-shell">scala&gt; val bi = BigInt(100000001)
+val bi: scala.math.BigInt = 100000001
+
+scala&gt; bi + bi
+val res2: scala.math.BigInt = 200000002
+
+scala&gt; bi - bi
+val res3: scala.math.BigInt = 0
+
+scala&gt; bi * bi
+val res4: scala.math.BigInt = 10000000200000001
+</code></pre>
+<pre><code class="language-shell">scala&gt; val bd = BigDecimal(10000.123)
+val bd: scala.math.BigDecimal = 10000.123
+
+scala&gt; bd + bd
+val res0: scala.math.BigDecimal = 20000.246
+
+scala&gt; bd * bd
+val res1: scala.math.BigDecimal = 100002460.01512
+</code></pre>
+<h2 id="referrences">Referrences</h2>
+<ul>
+<li>[1] Scala REPL, <a href="https://docs.scala-lang.org/overviews/scala-book/scala-repl.html">https://docs.scala-lang.org/overviews/scala-book/scala-repl.html</a></li>
+</ul>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../know-scala/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Know Scala" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Know Scala
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../variables/" class="md-footer__link md-footer__link--next" aria-label="Next: Variables" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Variables
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.bd0b6b67.min.js"}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.467223ff.min.js"></script>
+      
+    
+  </body>
+</html>

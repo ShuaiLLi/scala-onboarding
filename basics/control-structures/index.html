@@ -1,0 +1,959 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../assets/scala-favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.2.5">
+    
+    
+      
+        <title>Control Structures - Scala Onboarding</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2d9f7617.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Museo+Sans:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Museo Sans";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#control-structures" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Scala Onboarding" class="md-header__button md-logo" aria-label="Scala Onboarding" data-md-component="logo">
+      
+  <img src="../../assets/scala-favicon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Scala Onboarding
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Control Structures
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Scala Onboarding" class="md-nav__button md-logo" aria-label="Scala Onboarding" data-md-component="logo">
+      
+  <img src="../../assets/scala-favicon.png" alt="logo">
+
+    </a>
+    Scala Onboarding
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Build Tool
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Build Tool" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Build Tool
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../build-tool/sbt/" class="md-nav__link">
+        sbt
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Basics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Basics" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Basics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../know-scala/" class="md-nav__link">
+        Know Scala
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          Type System
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Type System" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Type System
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../build-in-data-types/" class="md-nav__link">
+        Build-in Data Types
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../variables/" class="md-nav__link">
+        Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../classes/" class="md-nav__link">
+        Class
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../traits/" class="md-nav__link">
+        Trait
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../companion-object/" class="md-nav__link">
+        Companion Object
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case-classes-and-case-objects/" class="md-nav__link">
+        Case Classes And Case Objects
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Control Structures
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Control Structures
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ifthenelse-structure" class="md-nav__link">
+    if/then/else Structure
+  </a>
+  
+    <nav class="md-nav" aria-label="if/then/else Structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    三种常见的代码示例
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#if" class="md-nav__link">
+    if 表达式总是会返回一个结果
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#note" class="md-nav__link">
+    Note: 面向表达式编程
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#for-loops-structure" class="md-nav__link">
+    for loops Structure
+  </a>
+  
+    <nav class="md-nav" aria-label="for loops Structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-foreach-method" class="md-nav__link">
+    The foreach method
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#for-expressions" class="md-nav__link">
+    for Expressions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#match-expressions" class="md-nav__link">
+    match Expressions
+  </a>
+  
+    <nav class="md-nav" aria-label="match Expressions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#-scala" class="md-nav__link">
+    题外话 - 简单看下Scala中如何定义方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#match" class="md-nav__link">
+    使用"match"表达式作为方法体
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#caseif" class="md-nav__link">
+    在"case"语句中使用"if"表达式
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trycatchfinally-structure" class="md-nav__link">
+    try/catch/finally Structure
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referrences" class="md-nav__link">
+    Referrences
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ifthenelse-structure" class="md-nav__link">
+    if/then/else Structure
+  </a>
+  
+    <nav class="md-nav" aria-label="if/then/else Structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    三种常见的代码示例
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#if" class="md-nav__link">
+    if 表达式总是会返回一个结果
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#note" class="md-nav__link">
+    Note: 面向表达式编程
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#for-loops-structure" class="md-nav__link">
+    for loops Structure
+  </a>
+  
+    <nav class="md-nav" aria-label="for loops Structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-foreach-method" class="md-nav__link">
+    The foreach method
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#for-expressions" class="md-nav__link">
+    for Expressions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#match-expressions" class="md-nav__link">
+    match Expressions
+  </a>
+  
+    <nav class="md-nav" aria-label="match Expressions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#-scala" class="md-nav__link">
+    题外话 - 简单看下Scala中如何定义方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#match" class="md-nav__link">
+    使用"match"表达式作为方法体
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#caseif" class="md-nav__link">
+    在"case"语句中使用"if"表达式
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trycatchfinally-structure" class="md-nav__link">
+    try/catch/finally Structure
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referrences" class="md-nav__link">
+    Referrences
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="control-structures">Control Structures</h1>
+<p>Scala拥有你希望能在编程语言中找到的基本的控制结构，如下所示:</p>
+<ul>
+<li>if/then/else</li>
+<li>for loops</li>
+<li>try/catch/finally</li>
+</ul>
+<p>Scala也有几个独特的控制结构，如下所示:</p>
+<ul>
+<li>match expressions</li>
+<li>for expressions</li>
+</ul>
+<p>接下来详细讲解这些控制结构.</p>
+<h2 id="ifthenelse-structure"><strong><em>if/then/else</em></strong> Structure</h2>
+<h3 id="_1">三种常见的代码示例</h3>
+<pre><code class="language-scala">if (x == y) {
+    doSomething()
+}
+
+// another style
+if (x == y) doSomething()
+</code></pre>
+<pre><code class="language-scala">if (x == y) {
+    doSomething()
+} else {
+    doSomethingElse()
+}
+</code></pre>
+<pre><code class="language-scala">if (x == y) {
+    doSomethingForXY()
+} else if (x == z) {
+    doSomethingForXZ()
+} else {
+    doSomethingElse()
+}
+</code></pre>
+<h3 id="if">if 表达式总是会返回一个结果</h3>
+<p>Scala有一个好的特性就是if结构总是会返回一个结果，但是你可以忽略它返回的结果，就像如上代码示例中那样.
+但是更加通用的做法是将它返回的结果指向一个变量，尤其是在函数式编程中, 如下为代码示例:</p>
+<pre><code class="language-scala">val minValue = if (x &lt; y) x else y
+</code></pre>
+<p>看到这样的代码，我们很容易想到 "三元运算符", 是的，它实现了和三元运算符一样的功能，因此Scala没有再引入特殊的三元运算符</p>
+<h3 id="note">Note: 面向表达式编程</h3>
+<p>当你写的每一个表达式都可以返回一个结果时, 我们称这种风格为 "面向表达式编程"(expression-oriented programming), 简称 EOP, 上一个代码示例就是这个风格.</p>
+<p>相反的, 不返回结果的代码行被叫做 "语句", 这种语句的作用就是为了产生副作用<sup>1</sup>, 如下为代码示例:</p>
+<pre><code class="language-scala">if (a == b) doSomething() // This is a statements, is for side-effects
+</code></pre>
+<h2 id="for-loops-structure"><strong><em>for loops</em></strong> Structure</h2>
+<p>for循环最简单的使用场景就是用来遍历容器中的元素，如下是一个代码示例:</p>
+<pre><code class="language-scala">val nums = Seq(1, 2, 3, 4)          // given a sequence of integers
+for (n &lt;- nums) println(n)
+</code></pre>
+<p>我们也可以使用for循环进行累加运算，如下为求前100项累加的和的代码示例:</p>
+<pre><code class="language-scala">var i = 0
+var sum = 0
+for (i &lt;- 1 to 100) sum += i
+println(sum)                        // 5050
+</code></pre>
+<p>for循环也可以用来遍历Map容器，如下为代码示例:</p>
+<pre><code class="language-scala">val scores = Map(
+  &quot;Andrew&quot; -&gt; 100,
+  &quot;Tom&quot; -&gt; 95,
+  &quot;Pater&quot; -&gt; 60
+)
+
+for ((name, score) &lt;- scores) println(s&quot;Name: $name, Score: $score&quot;)
+</code></pre>
+<h3 id="the-foreach-method">The foreach method</h3>
+<p>出于遍历容器中元素并打印元素的目的，在Scala中我们同样可以使用 foreach 方法, foreach 方法在Scala大多数的容器类中都是可用的，甚至包括Map, 如下为常用的代码示例:</p>
+<pre><code class="language-scala">val nums = Seq(1, 2, 3, 4)
+nums.foreach(println)
+</code></pre>
+<pre><code class="language-scala">val scores = Map(
+  &quot;Andrew&quot; -&gt; 100,
+  &quot;Tom&quot; -&gt; 95,
+  &quot;Pater&quot; -&gt; 60
+)
+
+scores.foreach {
+  case (name, score) =&gt; println(s&quot;Name: $name, Score: $score&quot;)
+}
+</code></pre>
+<h2 id="for-expressions"><strong><em>for</em></strong> Expressions</h2>
+<p>如何你还能想起我们在"if/then/else" Structure那一节中使用的"面向表达式编程"(EOP)以及表达式和语句之间的差异，你会发现我们上一节中使用 for 和 foreach 方法作为一种产生"副作用"的工具，我们利用他们和 println 方法将容器中元素的值打印出来.</p>
+<p>一旦你开始用Scala工作，你会发现在函数式编程中，你能够使用相比for语句来说功能更为强大的for表达式，一定要注意区分，for语句与for表达式是不一样的，for语句用来产生副作用的场景(比如说打印输出), for表达式用来从现有容器产生容器的场景，可见如下for表达式的代码示例:</p>
+<pre><code class="language-scala">val nums = Seq(1, 2, 3, 4 )
+val doubleNums = for (n &lt;- nums) yield n * 2            // doubleNums: (2, 4, 6, 8)
+
+// using a block of code
+val doubleNums = for (n &lt;- nums) yield { n * 2 }        // doubleNums: (2, 4, 6, 8)
+</code></pre>
+<p>Tips:</p>
+<ul>
+<li>
+<p><code>yield</code> 后边既可以是一个简短的表达式，也可以是一个复杂的代码块(用{}括住的部分)，一般推荐使用简单的表达式, 如果逻辑复杂非得写成多行的代码块，可以考虑将复杂的逻辑抽象出一个方法，这样<code>yield</code> 后边仍然是一个简单的表达式，只不过变成了一个方法的调用</p>
+</li>
+<li>
+<p>注意此处的<code>yield</code>关键字, 他的意思是我要根据已有的容器产出一个新容器，这里是"产出"的意思</p>
+</li>
+</ul>
+<h2 id="match-expressions"><strong><em>match</em></strong> Expressions</h2>
+<p>Scala设计了一种"match"表达式, 它类似于Java中的<code>switch</code>语句, 如下为代码示例:</p>
+<pre><code class="language-scala">val i = 5
+val numberDescription = i match {
+  case 1 =&gt; &quot;equals one&quot;
+  case 2 =&gt; &quot;equals two&quot;
+  case 11 =&gt; &quot;equals three&quot;
+  case _ =&gt; &quot;else number&quot;
+}
+println(numberDescription)            // else number
+</code></pre>
+<p>如代码示例可见, 当"i"匹配到某个case时，会返回case对应的字符串，最终将返回的字符串指向一个新的变量"numberDescription", "_" 代表的是任何其他值(除了1, 2, 11之外), 它是默认的case, 跟Java中的"default"是一个作用.</p>
+<p>Tip:</p>
+<ul>
+<li>Scala中的"match"表达式也是有返回值的，而不仅仅是可以用作产生副作用, 这对函数式编程和友好</li>
+</ul>
+<h3 id="-scala">题外话 - 简单看下Scala中如何定义方法</h3>
+<p>如下代码示例定义了一个值转化的简单方法:</p>
+<pre><code class="language-scala">def convertBooleanToStringMessage(bool: Boolean): String = {
+  if (bool) &quot;true&quot; else &quot;false&quot;        
+}
+
+val result = convertBooleanToStringMessage(true)    // true
+</code></pre>
+<p>这个方法是为了将入参的Boolean类型变量转换为对应的字符串变量</p>
+<h3 id="match">使用"match"表达式作为方法体</h3>
+<p>我们可以用"match"表达式重构下上一节中的"convertBooleanToStringMessage"方法，代码示例如下:</p>
+<pre><code class="language-scala">def convertBooleanToStringMessage(bool: Boolean): String = bool match {
+  case true =&gt; &quot;true&quot;
+  case false =&gt; &quot;false&quot;
+}
+</code></pre>
+<p>另外提一点，Scala的"match"表达式的一个"case"语句其实可以定义多个匹配规则, 代码示例如下:</p>
+<pre><code class="language-scala">val evenOrOdd = i match {
+  case 1 | 3 | 5 | 7 | 9 =&gt; println(&quot;odd&quot;)
+  case 2 | 4 | 6 | 8 | 10 =&gt; println(&quot;even&quot;)
+  case _ =&gt; println(&quot;some other number&quot;)
+}
+</code></pre>
+<p>这里的"|"表示或者，用来组合多个"值"匹配规则，这么说是因为如果是多个"表达式"匹配规则的"或"，我们需要使用"||", 这一点后后续会在示例中展示.</p>
+<h3 id="caseif">在"case"语句中使用"if"表达式</h3>
+<p>if表达式和case语句的组合将会使"模式匹配"<sup>2</sup>更加的强大, 见如下代码示例:</p>
+<pre><code class="language-scala">count match {
+  case 1 =&gt; println(&quot;one, a lonely number&quot;)
+  case x if x == 2 || x == 3 =&gt; println(&quot;two's company, three's a crowd&quot;)
+  case x if x &gt; 3 =&gt; println(&quot;4+, that's a party&quot;)
+  case _ =&gt; println(&quot;i'm guessing your number is zero or less&quot;)
+}
+</code></pre>
+<p>这里的"||"表示或者, 用来组合多个"表达式"匹配规则, 在第二个case语句中我们可以看到，程序会将入参count指向变量x，然后使用if去判断x(这里实际上就是count的值)是否等于2或者3，这就是case语句中if表达式的用法.</p>
+<p>对于匹配数字范围有这么一个代码示例:</p>
+<pre><code class="language-scala">i match {
+  case a if 0 to 9 contains a =&gt; println(&quot;0-9 range: &quot; + a)
+  case b if 10 to 19 contains b =&gt; println(&quot;10-19 range: &quot; + b)
+  case c if 20 to 29 contains c =&gt; println(&quot;20-29 range: &quot; + c)
+  case _ =&gt; println(&quot;Hmmm...&quot;)
+}
+</code></pre>
+<p>在实际工作中if表达式中使用引用字段是一个常见的场景, 代码示例如下:</p>
+<pre><code class="language-scala">i match {
+  case x if (x.symbol == &quot;XYZ&quot; &amp;&amp; x.price &lt; 20) =&gt; buy(x)
+  case x if (x.symbol == &quot;XYZ&quot; &amp;&amp; x.price &gt; 50) =&gt; sell(x)
+  case x =&gt; doNothing(x)
+}
+</code></pre>
+<h2 id="trycatchfinally-structure"><strong><em>try/catch/finally</em></strong> Structure</h2>
+<p>你可以使用"try/catch/finally"来捕获和管理异常. Scala中使用<code>case</code>语句来匹配可能发生的不同类型的异常, 如下是一个基本的代码示例:</p>
+<pre><code class="language-scala">var fileText = &quot;&quot;
+try {
+  fileText = openAndReadAFile(fileName)
+} catch {
+  case e: FileNotFoundException =&gt; println(&quot;Couldn't find that file.&quot;)
+  case e: IOException           =&gt; println(&quot;Had an IOException trying to read that file&quot;)
+}
+</code></pre>
+<p>在这个示例中，<code>openAndReadAFile</code> 方法用来打开并读取一个文件，然后将读取结果指向变量 <code>fileText</code>, Scala使用Java的<code>java.io.*</code>类操作文件，因此在这个过程中最可能抛出的异常就是<code>FileNotFoundException</code> 和 <code>IOException</code>, 这两个异常在示例的 <code>catch</code> 代码块中被捕获并处理.</p>
+<p>在异常捕获和处理中,  <code>finally</code> 语句一般用于资源的关闭，比如文件资源、数据库连接等, 可见如下代码示例:</p>
+<pre><code class="language-scala">try {
+  // your scala code here
+} 
+catch {
+  case e: FooException =&gt; handleFooException(e)
+  case e: BarException =&gt; handleBarException(e)
+  case _: Throwable =&gt; println(&quot;Got some other kind of Throwable exception&quot;)
+} finally {
+  // your scala code here, such as closing a database connection
+  // or file handle
+}
+</code></pre>
+<p>在Scala的"try/catch/finally"语法中最棒的事情就是对于不同类型的异常处理，我们只需在<code>catch</code>代码块中使用<code>case</code>进行匹配即可，这种方式显得相当简洁，这将会使你的代码风格一致，也会提升代码的可读性.</p>
+<h2 id="referrences">Referrences</h2>
+<ul>
+<li>[1] Side Effects, <a href="https://en.wikipedia.org/wiki/Side_effect_(computer_science)">https://en.wikipedia.org/wiki/Side_effect_(computer_science)</a></li>
+<li>[2] Pattern Matching, <a href="https://en.wikipedia.org/wiki/Pattern_matching">https://en.wikipedia.org/wiki/Pattern_matching</a></li>
+</ul>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../case-classes-and-case-objects/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Case Classes And Case Objects" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Case Classes And Case Objects
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.bd0b6b67.min.js"}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.467223ff.min.js"></script>
+      
+    
+  </body>
+</html>
